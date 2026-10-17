@@ -118,6 +118,15 @@ body {
   pointer-events: none;
 }
 
+/* Suisse Int'l Mono has no → glyph, so the arrow is drawn to match Figma:
+   46x16 at 67px type, 2px stroke, set about 11px after the last letter. */
+.arrow {
+  flex: none;
+  width: 0.687em;
+  height: 0.239em;
+  margin-left: 0.125em; /* offsets the -0.09em tracking after the last letter */
+}
+
 .column:hover .button,
 .column:focus-visible .button {
   opacity: 1;
