@@ -7,9 +7,9 @@ The design uses three families:
 
 | Family            | Used for                          | Weight needed   |
 | ----------------- | --------------------------------- | --------------- |
-| Suisse Works      | Headline ("Indifference is…")     | Regular (400)   |
-| Suisse Int'l      | Body text in the two columns      | Medium (500)    |
-| Suisse Int'l Mono | Labels and the Read more button   | Regular (400)   |
+| Suisse Works      | Headlines                         | Regular (400)   |
+| Suisse Int'l      | Body text                         | Medium (500)    |
+| Suisse Int'l Mono | Labels and buttons                | Regular (400)   |
 
 Files in use: `SuisseWorks-Regular.woff2`, `SuisseWorks-Medium.woff2`
 (available, not used in the current design), `SuisseIntl-Medium.woff2`,
