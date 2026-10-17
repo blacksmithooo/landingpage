@@ -148,7 +148,7 @@ ol, ul { padding: 0; list-style: none; }
 
 .promo {
   padding: 10px var(--gutter);
-  background: var(--grey);
+  background: #f8f8f8; /* just off the white page */
   color: var(--bl-black);
   text-align: center;
   font-family: var(--font-mono);
