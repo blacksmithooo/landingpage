@@ -1,0 +1,124 @@
+/*
+ * Built from the Figma frame "Landing page" (BCJ - Brand, node 1683:2).
+ * The frame is 6291px wide; --u maps one Figma pixel to the viewport so the
+ * proportions hold at any width.
+ *
+ * The design uses Suisse Int'l, Suisse Int'l Mono and Suisse Works (licensed).
+ * Drop the woff2 files into fonts/ to use them; otherwise the Google Fonts
+ * fallbacks loaded in index.html are used.
+ */
+@font-face { font-family: "Suisse Int'l"; src: local("Suisse Int'l Medium"), url("fonts/SuisseIntl-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Suisse Int'l Mono"; src: local("Suisse Int'l Mono"), url("fonts/SuisseIntlMono-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Suisse Works"; src: local("Suisse Works Regular"), url("fonts/SuisseWorks-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+
+:root {
+  --bl-black: #2b2b2b;
+  --bl-red: #ff1717;
+  --white: #ffffff;
+
+  --font-sans: "Suisse Int'l", "Inter", system-ui, sans-serif;
+  --font-serif: "Suisse Works", "Newsreader", Georgia, serif;
+  --font-mono: "Suisse Int'l Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  --u: calc(100vw / 6291);
+  --gutter: max(16px, calc(993 * var(--u)));
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--bl-black);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  padding: calc(982 * var(--u)) var(--gutter) 0;
+}
+
+.headline {
+  margin: 0;
+  max-width: calc(4603 * var(--u));
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: max(48px, calc(502 * var(--u)));
+  line-height: 0.8625; /* 433 / 502 */
+  letter-spacing: -0.01em;
+}
+
+.accent { color: var(--bl-red); }
+
+.columns {
+  display: grid;
+  grid-template-columns: calc(2089 * var(--u)) minmax(calc(1698 * var(--u)), auto);
+  justify-content: start;
+  column-gap: calc(205 * var(--u)); /* 3287 - (993 + 2089) */
+  margin-top: calc(563 * var(--u)); /* label top 2411 - headline bottom ~1848 */
+}
+
+.label {
+  margin: 0 0 calc(87 * var(--u));
+  font-family: var(--font-mono);
+  font-size: max(12px, calc(60 * var(--u)));
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.lede {
+  margin: 0;
+  font-weight: 500;
+  font-size: max(24px, calc(200 * var(--u)));
+  line-height: 1.125; /* 225 / 200 */
+  letter-spacing: -0.01em;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: calc(160 * var(--u));
+  min-width: calc(476 * var(--u));
+  min-height: max(44px, calc(155 * var(--u)));
+  padding: 0 max(16px, calc(38 * var(--u)));
+  border-radius: max(6px, calc(16 * var(--u)));
+  background: var(--bl-red);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: max(16px, calc(67 * var(--u)));
+  letter-spacing: -0.09em;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.button:hover { background: #e00e0e; }
+.button:focus-visible { outline: 3px solid var(--bl-black); outline-offset: 3px; }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: calc(1400 * var(--u)) var(--gutter) max(32px, calc(300 * var(--u)));
+}
+
+.logo {
+  display: block;
+  width: max(160px, calc(765 * var(--u)));
+  height: auto;
+}
+
+@media (max-width: 720px) {
+  :root { --gutter: 20px; }
+  .br-wide { display: none; }
+  .page { padding-top: 64px; }
+  .columns {
+    grid-template-columns: 1fr;
+    row-gap: 48px;
+    margin-top: 48px;
+  }
+  .label { margin-bottom: 12px; }
+  .button { margin-top: 24px; }
+  .footer { padding-top: 96px; }
+}
