@@ -8,7 +8,8 @@ Or open `index.html` in a browser — no build step.
 
 ## Fonts
 
-The design uses Suisse Int'l, Suisse Int'l Mono and Suisse Works, which are licensed.
-Upload the font files to the [`fonts/`](fonts/) folder (see the README there).
-Until they're in place, the page falls back to Inter, JetBrains Mono and
-Newsreader from Google Fonts.
+The page uses the brand typefaces from [`fonts/`](fonts/): Suisse Works
+(headline), Suisse Int'l Medium (column text) and Suisse Int'l Mono (labels
+and buttons). Sizes, line heights and letter spacing match the Figma frame,
+which is 6291px wide; the layout scales with it at any screen width above
+720px and stacks into one column on phones.
