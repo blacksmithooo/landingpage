@@ -173,13 +173,15 @@ ol, ul { padding: 0; list-style: none; }
   padding: 0 10px 0 24px;
   border: 1px solid transparent;
   border-radius: 12px;
+  background: rgba(242, 242, 242, 0);
+  transition: transform 0.4s cubic-bezier(.2,.7,.2,1), background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* The bar itself only appears once the page has scrolled. */
+.header.is-scrolled {
+  border-color: var(--line);
   background: rgba(242, 242, 242, 0.78);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  transition: transform 0.4s cubic-bezier(.2,.7,.2,1), border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.header.is-scrolled {
-  border-color: var(--line);
   box-shadow: 0 8px 24px rgba(43, 43, 43, 0.08);
 }
 .header.is-hidden { transform: translateY(calc(-100% - var(--header-top) - 4px)); }
