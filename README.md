@@ -2,7 +2,9 @@
 
 Blacksmith landing page, built from the "Landing page" frame in the BCJ – Brand Figma file.
 
-Open `index.html` in a browser — no build step.
+**Live preview:** https://blacksmithooo.github.io/landingpage/
+
+Or open `index.html` in a browser — no build step.
 
 ## Fonts
 
