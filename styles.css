@@ -60,7 +60,16 @@ body {
   margin-top: calc(563 * var(--u)); /* label top 2411 - headline bottom ~1848 */
 }
 
+.column {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.column:focus-visible { outline: 3px solid var(--bl-black); outline-offset: 8px; }
+
 .label {
+  display: block;
   margin: 0 0 calc(87 * var(--u));
   font-family: var(--font-mono);
   font-size: max(12px, calc(60 * var(--u)));
@@ -69,33 +78,56 @@ body {
 }
 
 .lede {
-  margin: 0;
+  --lede: max(24px, calc(200 * var(--u)));
+  position: relative;
+  display: block;
   font-weight: 500;
-  font-size: max(24px, calc(200 * var(--u)));
+  font-size: var(--lede);
   line-height: 1.125; /* 225 / 200 */
   letter-spacing: -0.01em;
 }
 
 .button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: calc(160 * var(--u));
-  min-width: calc(476 * var(--u));
+  width: fit-content;
+  min-width: max(120px, calc(476 * var(--u)));
   min-height: max(44px, calc(155 * var(--u)));
   padding: 0 max(16px, calc(38 * var(--u)));
   border-radius: max(6px, calc(16 * var(--u)));
   background: var(--bl-red);
   color: var(--white);
   font-family: var(--font-mono);
+  font-weight: 400;
   font-size: max(16px, calc(67 * var(--u)));
+  line-height: 1;
   letter-spacing: -0.09em;
-  text-decoration: none;
-  transition: background-color 0.15s ease;
 }
 
-.button:hover { background: #e00e0e; }
-.button:focus-visible { outline: 3px solid var(--bl-black); outline-offset: 3px; }
+/* Touch screens can't hover, so the button sits under the text. */
+.button { margin-top: max(16px, calc(100 * var(--u))); }
+
+/* With a pointer, the button floats over the text on hover/focus, placed as
+   in the design: 568px right and 372px down from the paragraph's top-left
+   at a 200px font size. */
+@media (hover: hover) {
+  .button {
+    position: absolute;
+    left: calc(var(--lede) * 2.84);
+    top: calc(var(--lede) * 1.86);
+    margin: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }
+  .column:hover .button,
+  .column:focus-visible .button {
+    opacity: 1;
+    transform: none;
+  }
+}
 
 .footer {
   display: flex;
@@ -119,6 +151,5 @@ body {
     margin-top: 48px;
   }
   .label { margin-bottom: 12px; }
-  .button { margin-top: 24px; }
   .footer { padding-top: 96px; }
 }
