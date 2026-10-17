@@ -11,13 +11,27 @@ if (window.Lenis && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
 document.documentElement.classList.add('js');
 
-// Header: hairline once the page scrolls; mobile menu toggle.
+// Header: shadow once the page scrolls, hides while scrolling down and
+// returns on any scroll up. Stays put while the mobile menu is open or
+// something inside it has keyboard focus.
 const header = document.querySelector('.header');
 const menu = document.querySelector('.menu');
 const nav = document.getElementById('nav');
 
-const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+let lastY = window.scrollY;
+const onScroll = () => {
+  const y = window.scrollY;
+  const delta = y - lastY;
+  header.classList.toggle('is-scrolled', y > 8);
+  if (Math.abs(delta) < 4) return;
+  const pinned = nav.classList.contains('is-open') || header.querySelector(':focus-visible');
+  header.classList.toggle('is-hidden', delta > 0 && y > 160 && !pinned);
+  lastY = y;
+};
 window.addEventListener('scroll', onScroll, { passive: true });
+header.addEventListener('focusin', (e) => {
+  if (e.target.matches(':focus-visible')) header.classList.remove('is-hidden');
+});
 onScroll();
 
 menu.addEventListener('click', () => {
