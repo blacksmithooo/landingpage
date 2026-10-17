@@ -148,8 +148,8 @@ ol, ul { padding: 0; list-style: none; }
 
 .promo {
   padding: 10px var(--gutter);
-  background: var(--bl-black);
-  color: var(--white);
+  background: var(--grey);
+  color: var(--bl-black);
   text-align: center;
   font-family: var(--font-mono);
   font-weight: 400;
