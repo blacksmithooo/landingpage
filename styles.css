@@ -60,10 +60,15 @@ body {
   margin-top: calc(563 * var(--u)); /* label top 2411 - headline bottom ~1848 */
 }
 
-.column {
+.column,
+.column:link,
+.column:visited,
+.column:hover,
+.column:active {
   display: block;
-  color: inherit;
+  color: var(--bl-black);
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .column:focus-visible { outline: 3px solid var(--bl-black); outline-offset: 8px; }
@@ -87,11 +92,17 @@ body {
   letter-spacing: -0.01em;
 }
 
+/* Floats over the paragraph, placed as in the design: 568px right and 372px
+   down from the paragraph's top-left at a 200px font size. Hidden until the
+   column is hovered (or tapped/focused). */
 .button {
+  position: absolute;
+  left: calc(var(--lede) * 2.84);
+  top: calc(var(--lede) * 1.86);
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
   min-width: max(120px, calc(476 * var(--u)));
   min-height: max(44px, calc(155 * var(--u)));
   padding: 0 max(16px, calc(38 * var(--u)));
@@ -103,30 +114,17 @@ body {
   font-size: max(16px, calc(67 * var(--u)));
   line-height: 1;
   letter-spacing: -0.09em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
 }
 
-/* Touch screens can't hover, so the button sits under the text. */
-.button { margin-top: max(16px, calc(100 * var(--u))); }
-
-/* With a pointer, the button floats over the text on hover/focus, placed as
-   in the design: 568px right and 372px down from the paragraph's top-left
-   at a 200px font size. */
-@media (hover: hover) {
-  .button {
-    position: absolute;
-    left: calc(var(--lede) * 2.84);
-    top: calc(var(--lede) * 1.86);
-    margin: 0;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    pointer-events: none;
-  }
-  .column:hover .button,
-  .column:focus-visible .button {
-    opacity: 1;
-    transform: none;
-  }
+.column:hover .button,
+.column:focus-visible .button {
+  opacity: 1;
+  transform: none;
 }
 
 .footer {
