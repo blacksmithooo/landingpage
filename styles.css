@@ -169,8 +169,11 @@ ol, ul { padding: 0; list-style: none; }
   justify-content: space-between;
   gap: 24px;
   height: var(--header-h);
-  margin: var(--header-top) var(--gutter) 0;
-  padding: 0 10px 0 24px;
+  /* Wider than the content so the logo and button line up with the page
+     edges below, while the bar still has room around them. */
+  --header-x: max(8px, calc(var(--gutter) - 24px));
+  margin: var(--header-top) var(--header-x) 0;
+  padding: 0 calc(var(--gutter) - var(--header-x));
   border-radius: 12px;
   background: rgba(242, 242, 242, 0);
   transition: transform 0.4s cubic-bezier(.2,.7,.2,1), background-color 0.3s ease, box-shadow 0.3s ease;
@@ -217,30 +220,12 @@ ol, ul { padding: 0; list-style: none; }
 .hero { padding: var(--header-top) var(--gutter) 0; }
 
 .hero__panel {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: calc(100svh - var(--header-h) - 2 * var(--header-top) - 40px - var(--gutter));
-  padding: clamp(28px, 4vw, 72px);
-  border-radius: var(--radius);
-  background: var(--bl-black);
-  color: var(--white);
-  overflow: hidden;
+  padding: clamp(28px, 4vw, 72px) 0;
 }
-/* A soft red glow standing in for campaign photography. */
-.hero__panel::before {
-  content: "";
-  position: absolute;
-  right: -20%;
-  bottom: -40%;
-  width: 80vw;
-  height: 80vw;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 23, 23, 0.55), rgba(255, 23, 23, 0));
-  pointer-events: none;
-}
-.hero__panel > * { position: relative; }
 
 .hero__title {
   margin: clamp(40px, 8vh, 120px) 0;
@@ -645,9 +630,9 @@ ol, ul { padding: 0; list-style: none; }
 
 @media (max-width: 600px) {
   body { font-size: 16px; }
-  .header { padding-left: 18px; }
   .header__logo img { width: 120px; }
-  .hero__panel { min-height: 80svh; }
+  .hero__panel { min-height: 0; }
+  .hero__title { margin: 56px 0; }
   .carousel-controls { display: none; }
   .card__glyph { font-size: 76px; }
   .week { grid-template-columns: 1fr; grid-template-areas: "label" "title" "body"; }
