@@ -35,7 +35,7 @@ The layout mirrors a modern smart-glasses product page, section by section:
 "Lumen" is a placeholder product. All copy, prices and artwork are
 placeholders to swap for real content. All imagery is AI-generated:
 
-- `assets/photos/`: lifestyle shots (stills and frames from the hero video shoot).
+- `assets/photos/`: lifestyle shots (stills and frames from the hero video shoot, plus `app.jpg`, the Lumen app in hand).
 - `assets/products/`: product shots on white, one per style and colourway
   (`<style>-<colour>.jpg`), plus `hotspot.jpg` for the "What's inside the frame"
   diagram. Each colourway was generated from its style's base shot so the shape

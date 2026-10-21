@@ -213,10 +213,6 @@ svg { display: block; }
 .control h3 { font-size: 28px; font-weight: 400; }
 .control article p { margin-top: 16px; font-size: 14px; color: var(--muted); }
 .control article a { color: var(--blue); font-weight: 600; text-decoration: none; }
-.phone { width: 62%; aspect-ratio: 9 / 18; margin-top: 18%; padding: 8px; border-radius: 36px; background: #111; }
-.phone__screen { height: 100%; border-radius: 28px; background: #fff; padding: 36px 14px; text-align: center; font-size: 13px; }
-.phone__screen img { display: block; width: 100%; margin: 4px auto; aspect-ratio: 16 / 9; height: auto; object-fit: contain; mix-blend-mode: multiply; }
-.phone__screen span { display: block; height: 28px; margin-top: 8px; border-radius: 10px; background: var(--card); }
 
 /* Family */
 .family__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
