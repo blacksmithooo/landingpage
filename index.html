@@ -14,29 +14,6 @@
 <body>
   <a class="skip" href="#main">Skip to main content</a>
 
-  <!-- Placeholder glasses artwork, reused across the page -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <symbol id="frames" viewBox="0 0 400 140">
-        <path d="M8 40c0-10 6-16 18-17l132-6c14 0 22 8 22 22v26c0 34-22 56-60 56H76C34 121 8 96 8 62z" fill="currentColor"/>
-        <path d="M392 40c0-10-6-16-18-17l-132-6c-14 0-22 8-22 22v26c0 34 22 56 60 56h44c42 0 68-25 68-59z" fill="currentColor"/>
-        <path d="M180 44c8-8 32-8 40 0" stroke="currentColor" stroke-width="10" fill="none"/>
-        <path d="M24 38l128-5c10 0 15 5 15 14v20c0 28-17 43-48 43H80c-34 0-56-19-56-46z" fill="var(--lens, #1b1f24)"/>
-        <path d="M376 38l-128-5c-10 0-15 5-15 14v20c0 28 17 43 48 43h39c34 0 56-19 56-46z" fill="var(--lens, #1b1f24)"/>
-        <path d="M40 46l40-2-30 40c-8-10-12-22-10-38z" fill="#fff" opacity=".12"/>
-        <path d="M256 44l40-2-32 44c-8-12-10-26-8-42z" fill="#fff" opacity=".12"/>
-        <circle cx="22" cy="34" r="4" fill="#0b0b0b" opacity=".7"/>
-        <circle cx="378" cy="34" r="4" fill="#0b0b0b" opacity=".7"/>
-      </symbol>
-      <!-- Same frames with the temple arms showing, for the hotspot diagram -->
-      <symbol id="frames-arms" viewBox="0 0 400 190">
-        <path d="M14 82L96 6c4-4 10-4 12 0l2 6-84 80z" fill="currentColor" opacity=".72"/>
-        <path d="M386 82L304 6c-4-4-10-4-12 0l-2 6 84 80z" fill="currentColor" opacity=".72"/>
-        <use href="#frames" x="0" y="50" width="400" height="140"/>
-      </symbol>
-    </defs>
-  </svg>
-
   <!-- Global header + product bar, sticky together -->
   <div class="topbar" id="topbar">
     <header class="header">
@@ -98,14 +75,14 @@
       <div class="styles__grid">
         <article class="style-card" data-style>
           <span class="tag">New</span>
-          <div class="style-card__media"><svg class="style-card__frames" style="color:#111"><use href="#frames"/></svg></div>
+          <div class="style-card__media"><img class="style-card__img" src="assets/products/wayline-black.jpg" alt="Wayline in matte black" loading="lazy"></div>
           <div class="swatches" role="radiogroup" aria-label="Wayline colour">
-            <button role="radio" aria-checked="true" aria-label="Matte black" style="--c:#111"></button>
-            <button role="radio" aria-checked="false" aria-label="Olive" style="--c:#4c5a3a"></button>
-            <button role="radio" aria-checked="false" aria-label="Tortoise" style="--c:#6b3f1e"></button>
-            <button role="radio" aria-checked="false" aria-label="Slate" style="--c:#4a5560"></button>
-            <button role="radio" aria-checked="false" aria-label="Navy" style="--c:#28385a"></button>
-            <button role="radio" aria-checked="false" aria-label="Sand" style="--c:#cdb89a"></button>
+            <button role="radio" aria-checked="true" aria-label="Matte black" data-src="assets/products/wayline-black.jpg" style="--c:#111"></button>
+            <button role="radio" aria-checked="false" aria-label="Olive" data-src="assets/products/wayline-olive.jpg" style="--c:#4c5a3a"></button>
+            <button role="radio" aria-checked="false" aria-label="Tortoise" data-src="assets/products/wayline-tortoise.jpg" style="--c:#6b3f1e"></button>
+            <button role="radio" aria-checked="false" aria-label="Slate" data-src="assets/products/wayline-slate.jpg" style="--c:#4a5560"></button>
+            <button role="radio" aria-checked="false" aria-label="Navy" data-src="assets/products/wayline-navy.jpg" style="--c:#28385a"></button>
+            <button role="radio" aria-checked="false" aria-label="Sand" data-src="assets/products/wayline-sand.jpg" style="--c:#cdb89a"></button>
           </div>
           <p class="style-card__eyebrow">Lumen (Gen 3)</p>
           <h3>Wayline</h3>
@@ -113,13 +90,13 @@
         </article>
         <article class="style-card" data-style>
           <span class="tag">New</span>
-          <div class="style-card__media"><svg class="style-card__frames" style="color:#5a3a22;--lens:#3b2a1e"><use href="#frames"/></svg></div>
+          <div class="style-card__media"><img class="style-card__img" src="assets/products/pilot-tortoise.jpg" alt="Pilot in tortoise" loading="lazy"></div>
           <div class="swatches" role="radiogroup" aria-label="Pilot colour">
-            <button role="radio" aria-checked="true" aria-label="Tortoise" style="--c:#5a3a22"></button>
-            <button role="radio" aria-checked="false" aria-label="Matte black" style="--c:#111"></button>
-            <button role="radio" aria-checked="false" aria-label="Chestnut" style="--c:#7a3b22"></button>
-            <button role="radio" aria-checked="false" aria-label="Olive" style="--c:#4c5a3a"></button>
-            <button role="radio" aria-checked="false" aria-label="Clear" style="--c:#c9ced3"></button>
+            <button role="radio" aria-checked="true" aria-label="Tortoise" data-src="assets/products/pilot-tortoise.jpg" style="--c:#5a3a22"></button>
+            <button role="radio" aria-checked="false" aria-label="Matte black" data-src="assets/products/pilot-black.jpg" style="--c:#111"></button>
+            <button role="radio" aria-checked="false" aria-label="Chestnut" data-src="assets/products/pilot-chestnut.jpg" style="--c:#7a3b22"></button>
+            <button role="radio" aria-checked="false" aria-label="Olive" data-src="assets/products/pilot-olive.jpg" style="--c:#4c5a3a"></button>
+            <button role="radio" aria-checked="false" aria-label="Clear" data-src="assets/products/pilot-clear.jpg" style="--c:#c9ced3"></button>
           </div>
           <p class="style-card__eyebrow">Lumen (Gen 3)</p>
           <h3>Pilot</h3>
@@ -127,12 +104,12 @@
         </article>
         <article class="style-card" data-style>
           <span class="tag">New</span>
-          <div class="style-card__media"><svg class="style-card__frames" style="color:#111;--lens:#2c3b2c"><use href="#frames"/></svg></div>
+          <div class="style-card__media"><img class="style-card__img" src="assets/products/cateye-black.jpg" alt="Cat-eye in matte black" loading="lazy"></div>
           <div class="swatches" role="radiogroup" aria-label="Cat-eye colour">
-            <button role="radio" aria-checked="true" aria-label="Matte black" style="--c:#111"></button>
-            <button role="radio" aria-checked="false" aria-label="Tortoise" style="--c:#6b3f1e"></button>
-            <button role="radio" aria-checked="false" aria-label="Forest" style="--c:#2d3b2f"></button>
-            <button role="radio" aria-checked="false" aria-label="Amber" style="--c:#b8742f"></button>
+            <button role="radio" aria-checked="true" aria-label="Matte black" data-src="assets/products/cateye-black.jpg" style="--c:#111"></button>
+            <button role="radio" aria-checked="false" aria-label="Tortoise" data-src="assets/products/cateye-tortoise.jpg" style="--c:#6b3f1e"></button>
+            <button role="radio" aria-checked="false" aria-label="Forest" data-src="assets/products/cateye-forest.jpg" style="--c:#2d3b2f"></button>
+            <button role="radio" aria-checked="false" aria-label="Amber" data-src="assets/products/cateye-amber.jpg" style="--c:#b8742f"></button>
           </div>
           <p class="style-card__eyebrow">Lumen (Gen 3)</p>
           <h3>Cat-eye</h3>
@@ -224,20 +201,20 @@
       <h2 class="center">What’s inside the frame</h2>
       <p class="center sub">Hover or tap a point to see the technology built into every pair.</p>
       <div class="hotspots__stage">
-        <svg class="hotspots__frames" viewBox="0 0 400 190" style="color:#5a3a22;--lens:#4a3626"><use href="#frames-arms"/></svg>
-        <button class="hotspot" type="button" style="left:20%;top:22%" data-title="Open-ear speakers" data-body="Speakers in each temple point sound towards your ears, so people nearby hear very little.">
+        <img class="hotspots__img" src="assets/products/hotspot.jpg" alt="Lumen Wayline glasses with temple arms open" loading="lazy">
+        <button class="hotspot" type="button" style="left:28%;top:15%" data-title="Open-ear speakers" data-body="Speakers in each temple point sound towards your ears, so people nearby hear very little.">
           <span class="hotspot__dot"></span><span class="hotspot__label">Open-ear speakers</span>
         </button>
-        <button class="hotspot" type="button" style="left:80%;top:22%" data-title="All-day battery" data-body="Up to 8 hours of typical use, plus up to 48 more from the charging case.">
+        <button class="hotspot hotspot--left" type="button" style="left:87%;top:31%" data-title="All-day battery" data-body="Up to 8 hours of typical use, plus up to 48 more from the charging case.">
           <span class="hotspot__dot"></span><span class="hotspot__label">All-day battery</span>
         </button>
-        <button class="hotspot" type="button" style="left:6%;top:50%" data-title="12MP camera" data-body="An ultra-wide camera tucked into the hinge shoots photos and 3K video.">
+        <button class="hotspot" type="button" style="left:5%;top:33%" data-title="12MP camera" data-body="An ultra-wide camera tucked into the hinge shoots photos and 3K video.">
           <span class="hotspot__dot"></span><span class="hotspot__label">12MP camera</span>
         </button>
-        <button class="hotspot" type="button" style="left:50%;top:50%" data-title="Five-mic array" data-body="Microphones around the frame pick up your voice and filter out wind and background noise.">
+        <button class="hotspot" type="button" style="left:40%;top:40%" data-title="Five-mic array" data-body="Microphones around the frame pick up your voice and filter out wind and background noise.">
           <span class="hotspot__dot"></span><span class="hotspot__label">Five-mic array</span>
         </button>
-        <button class="hotspot hotspot--left" type="button" style="left:94%;top:50%" data-title="Capture light" data-body="An LED lights up whenever the camera is recording, so people around you know.">
+        <button class="hotspot hotspot--left" type="button" style="left:75%;top:47%" data-title="Capture light" data-body="An LED lights up whenever the camera is recording, so people around you know.">
           <span class="hotspot__dot"></span><span class="hotspot__label">Capture light</span>
         </button>
       </div>
@@ -262,7 +239,7 @@
       <div class="control__grid">
         <article>
           <div class="control__media media media--soft">
-            <div class="phone"><div class="phone__screen"><b>Wayline</b><svg style="color:#111"><use href="#frames"/></svg><span></span><span></span><span></span></div></div>
+            <div class="phone"><div class="phone__screen"><b>Wayline</b><img src="assets/products/wayline-black.jpg" alt="" loading="lazy"><span></span><span></span><span></span></div></div>
           </div>
           <h3>Lumen app</h3>
           <p>Set up your glasses, change settings, import photos and talk to your assistant in one app. The app is required to use your glasses.</p>
@@ -366,7 +343,7 @@
   <!-- Hotspot detail sheet -->
   <dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
     <button class="icon sheet__close" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <div class="sheet__media media media--soft"><svg style="color:#5a3a22;--lens:#4a3626"><use href="#frames"/></svg></div>
+    <div class="sheet__media media media--soft"><img class="sheet__img" src="assets/products/hotspot.jpg" alt="" loading="lazy"></div>
     <h3 id="sheet-title"></h3>
     <p id="sheet-body"></p>
   </dialog>

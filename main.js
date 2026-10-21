@@ -54,14 +54,19 @@ play.addEventListener('click', () => {
   else video.pause();
 });
 
-// Style cards: swatches recolour the frames
+// Style cards: swatches swap in the photo of that colourway
 document.querySelectorAll('[data-style]').forEach((card) => {
-  const frames = card.querySelector('.style-card__frames');
+  const img = card.querySelector('.style-card__img');
+  const name = card.querySelector('h3').textContent;
   const swatches = card.querySelectorAll('.swatches button');
-  swatches.forEach((sw) => sw.addEventListener('click', () => {
-    swatches.forEach((b) => b.setAttribute('aria-checked', b === sw));
-    frames.style.color = sw.style.getPropertyValue('--c');
-  }));
+  swatches.forEach((sw) => {
+    new Image().src = sw.dataset.src; // preload so swaps are instant
+    sw.addEventListener('click', () => {
+      swatches.forEach((b) => b.setAttribute('aria-checked', b === sw));
+      img.src = sw.dataset.src;
+      img.alt = `${name} in ${sw.getAttribute('aria-label').toLowerCase()}`;
+    });
+  });
 });
 
 // Assistant: cycle example questions, and raise the video card with scroll
@@ -119,10 +124,10 @@ const icon = {
   button: '<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M12 10v6M8 20h8"/></svg>',
 };
 const models = [
-  { name: 'Wayline (Gen 3)', color: '#111', lens: '#2d3a2d', price: '€379', specs: [['battery', 'Up to 8 hours'], ['video', '3K video at 30 fps'], ['fit', 'Standard fit'], ['button', 'Custom action button']] },
-  { name: 'Pilot (Audio)', color: '#5a3a22', lens: '#3b2a1e', price: '€299', specs: [['battery', 'Up to 10 hours'], ['audio', 'Audio only'], ['fit', 'Lightweight fit'], ['button', 'Custom action button']] },
-  { name: 'Wayline (Gen 2)', color: '#4a5560', lens: '#1f2f4a', price: '€329', specs: [['battery', 'Up to 4 hours'], ['video', '1080p video at 30 fps'], ['fit', 'Standard fit'], ['button', 'Capture button']] },
-  { name: 'Cat-eye (Gen 3)', color: '#111', lens: '#2c3b2c', price: '€399', specs: [['battery', 'Up to 8 hours'], ['video', '3K video at 30 fps'], ['fit', 'Narrow fit'], ['button', 'Custom action button']] },
+  { name: 'Wayline (Gen 3)', img: 'wayline-black', price: '€379', specs: [['battery', 'Up to 8 hours'], ['video', '3K video at 30 fps'], ['fit', 'Standard fit'], ['button', 'Custom action button']] },
+  { name: 'Pilot (Audio)', img: 'pilot-tortoise', price: '€299', specs: [['battery', 'Up to 10 hours'], ['audio', 'Audio only'], ['fit', 'Lightweight fit'], ['button', 'Custom action button']] },
+  { name: 'Wayline (Gen 2)', img: 'wayline-slate', price: '€329', specs: [['battery', 'Up to 4 hours'], ['video', '1080p video at 30 fps'], ['fit', 'Standard fit'], ['button', 'Capture button']] },
+  { name: 'Cat-eye (Gen 3)', img: 'cateye-black', price: '€399', specs: [['battery', 'Up to 8 hours'], ['video', '3K video at 30 fps'], ['fit', 'Narrow fit'], ['button', 'Custom action button']] },
 ];
 document.querySelectorAll('[data-compare]').forEach((col) => {
   const render = (i) => {
@@ -130,7 +135,7 @@ document.querySelectorAll('[data-compare]').forEach((col) => {
     col.innerHTML = `
       <div class="select"><label class="visually-hidden" for="cmp-${col.dataset.compare}">Choose a model</label>
         <select id="cmp-${col.dataset.compare}">${models.map((o, j) => `<option value="${j}"${j === i ? ' selected' : ''}>${o.name}</option>`).join('')}</select></div>
-      <div class="compare__media"><svg style="color:${m.color};--lens:${m.lens}"><use href="#frames"/></svg></div>
+      <div class="compare__media"><img src="assets/products/${m.img}.jpg" alt="${m.name}" loading="lazy"></div>
       <p class="compare__eyebrow">Lumen</p>
       <h3>${m.name}</h3>
       <p class="compare__price">Starting at<b>${m.price}</b></p>

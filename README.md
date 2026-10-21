@@ -33,11 +33,19 @@ The layout mirrors a modern smart-glasses product page, section by section:
 | `chip` | Dark frosted label floating over media. |
 
 "Lumen" is a placeholder product. All copy, prices and artwork are
-placeholders to swap for real content. Photo slots use AI-generated images of
-the placeholder glasses (stills and frames from the hero video shoot, in
-`assets/photos/`). The style cards, hotspot diagram, compare columns, phone
-mockup and detail sheet still use the inline SVG frame, because their
-swatches and hotspots recolour or position the drawing.
+placeholders to swap for real content. All imagery is AI-generated:
+
+- `assets/photos/`: lifestyle shots (stills and frames from the hero video shoot).
+- `assets/products/`: product shots on white, one per style and colourway
+  (`<style>-<colour>.jpg`), plus `hotspot.jpg` for the "What's inside the frame"
+  diagram. Each colourway was generated from its style's base shot so the shape
+  stays identical. They use `mix-blend-mode: multiply`, so the white background
+  takes on the colour of the card behind it.
+
+Style card swatches swap the product photo (each swatch has a `data-src`), and
+the compare columns pick their photo from the `img` field in `models` in
+`main.js`. The hotspots are positioned in percentages over `hotspot.jpg`, so
+they need re-placing if that image changes.
 
 ### Hero video
 
@@ -60,7 +68,7 @@ the bottom instead.
 
 - `index.html`: markup
 - `styles.css`: styles, with design tokens at the top under `:root`
-- `assets/`: hero video and its poster image; `assets/photos/` holds the section photos
+- `assets/`: hero video and poster; `assets/photos/` lifestyle shots; `assets/products/` product shots
 - `main.js`: smooth scrolling, header/product bar, menu, hero video play/pause, swatches, assistant scroll effect, hotspots, compare columns, FAQ, scroll reveals
 
 ## Smooth scrolling
