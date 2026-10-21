@@ -4,17 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lumen Smart Glasses (Gen 3)</title>
-  <meta name="description" content="Lumen (Gen 3): classic frames with a built-in camera, open-ear audio and a voice assistant that sees what you see.">
-  <link rel="preload" href="fonts/SuisseWorks-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="description" content="Lumen (Gen 3): classic frames with a built-in camera, open-ear audio and a voice assistant.">
   <link rel="preload" href="fonts/SuisseIntl-Medium.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/SuisseIntlMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script src="main.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main">Skip to main content</a>
 
-  <!-- Inline art, reused across the page -->
+  <!-- Placeholder glasses artwork, reused across the page -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="frames" viewBox="0 0 400 140">
@@ -28,304 +26,341 @@
         <circle cx="22" cy="34" r="4" fill="#0b0b0b" opacity=".7"/>
         <circle cx="378" cy="34" r="4" fill="#0b0b0b" opacity=".7"/>
       </symbol>
+      <!-- Same frames with the temple arms showing, for the hotspot diagram -->
+      <symbol id="frames-arms" viewBox="0 0 400 190">
+        <path d="M14 82L96 6c4-4 10-4 12 0l2 6-84 80z" fill="currentColor" opacity=".72"/>
+        <path d="M386 82L304 6c-4-4-10-4-12 0l-2 6 84 80z" fill="currentColor" opacity=".72"/>
+        <use href="#frames" x="0" y="50" width="400" height="140"/>
+      </symbol>
     </defs>
   </svg>
 
-  <header class="header" id="header">
-    <a class="logo" href="#top" aria-label="Lumen home">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="17" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
-      Lumen
-    </a>
-    <nav class="nav" id="nav" aria-label="Main">
-      <a href="#styles">Glasses</a>
-      <a href="#audio">Audio</a>
-      <a href="#camera">Camera</a>
-      <a href="#control">App</a>
-      <a href="#faq">Support</a>
-    </nav>
-    <div class="header__icons">
-      <button class="icon" type="button" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button>
-      <button class="icon" type="button" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 13H7z"/><path d="M9 8a3 3 0 016 0"/></svg></button>
-      <button class="icon menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
+  <!-- Global header + product bar, sticky together -->
+  <div class="topbar" id="topbar">
+    <header class="header">
+      <a class="logo" href="#top" aria-label="Lumen home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="12" r="5"/><circle cx="17" cy="12" r="5"/></svg>
+        Lumen
+      </a>
+      <nav class="nav" id="nav" aria-label="Main">
+        <div class="nav__group">
+          <a href="#styles">Smart glasses</a>
+          <a href="#family">Audio glasses</a>
+          <a href="#compare">Compare</a>
+        </div>
+        <div class="nav__group">
+          <a href="#control">Explore Lumen</a>
+          <a href="#faq">Support</a>
+        </div>
+      </nav>
+      <div class="header__icons">
+        <button class="icon" type="button" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button>
+        <button class="icon icon--region" type="button" aria-label="Region: Sweden"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>SE</span></button>
+        <button class="icon" type="button" aria-label="View bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z"/><path d="M9 8a3 3 0 016 0"/></svg></button>
+        <button class="icon" type="button" aria-label="Account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></button>
+        <button class="icon menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
+      </div>
+    </header>
+    <div class="productbar">
+      <p class="productbar__name"><span class="productbar__cat">Smart glasses | </span>Lumen (Gen 3)</p>
+      <div class="productbar__right">
+        <p class="productbar__price"><span>Starting at</span>€379</p>
+        <a class="pill pill--primary" href="#styles">Shop all styles</a>
+      </div>
     </div>
-  </header>
+  </div>
 
   <main id="main">
-    <!-- Hero -->
+    <!-- 1. Hero -->
     <section class="hero" id="top">
-      <div class="hero__media" aria-hidden="true">
-        <div class="hero__glow"></div>
+      <div class="hero__media media media--hero" aria-hidden="true">
         <svg class="hero__frames"><use href="#frames"/></svg>
       </div>
       <div class="hero__copy">
-        <p class="hero__brand">Lumen <span>Gen 3</span></p>
-        <h1>Classic frames.<br>A sharper way to see.</h1>
-        <p class="hero__sub">Camera, audio and an assistant, built into glasses you’d wear anyway.</p>
+        <p class="lockup"><span>LUMEN</span><i></i><span>Gen 3</span></p>
+        <h1>Classic frames. A sharper way to see.</h1>
+        <p class="hero__sub">Your favourite shapes, now with a built-in assistant.</p>
       </div>
-      <button class="hero__play" type="button" aria-label="Pause animation" aria-pressed="false">
+      <button class="hero__play" type="button" aria-label="Pause video" aria-pressed="false">
         <svg class="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>
-        <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg>
       </button>
     </section>
 
-    <!-- Sticky buy bar -->
-    <div class="buybar" id="buybar">
-      <p class="buybar__name"><span class="buybar__cat">Smart glasses <span>|</span></span> Lumen (Gen 3)</p>
-      <div class="buybar__right">
-        <p class="buybar__price"><span>Starting at</span>€379</p>
-        <a class="btn btn--blue" href="#styles">Shop all styles</a>
-      </div>
-    </div>
-
-    <!-- Intro -->
-    <section class="intro reveal">
-      <h2>Upgrade your everyday with Lumen (Gen 3)</h2>
-      <p>Twice the battery, a sharper 3K camera and a lighter frame. Same timeless shape.</p>
-      <div class="stats">
-        <div><strong>8h</strong><span>Typical battery life</span></div>
-        <div><strong>3K</strong><span>Ultra HD video</span></div>
-        <div><strong>48h</strong><span>Extra charge in the case</span></div>
-      </div>
-    </section>
-
-    <!-- Assistant -->
-    <section class="assist" id="assistant">
-      <div class="assist__inner">
-        <p class="eyebrow">Built-in assistant</p>
-        <h2 class="assist__wake">“Hey Lumen,”</h2>
-        <p class="assist__query" id="query" aria-live="polite">what’s worth seeing on this street?</p>
-        <p class="assist__body">Ask about what’s in front of you, get directions, translate a menu or set a reminder. No phone, no screen, just your voice.</p>
-      </div>
-    </section>
-
-    <!-- Audio -->
-    <section class="split reveal" id="audio">
-      <div class="split__media split__media--warm" aria-hidden="true">
-        <svg class="split__frames" style="--lens:#3b2a1e"><use href="#frames"/></svg>
-        <div class="waves"><span></span><span></span><span></span><span></span><span></span></div>
-      </div>
-      <div class="split__copy">
-        <p class="eyebrow">New</p>
-        <h2>Introducing Lumen Audio</h2>
-        <p>An audio-first frame with no camera, for people who want great sound and a simple design. Open-ear speakers sit just above your ears, so you still hear the world around you.</p>
-        <a class="textlink" href="#family">Learn more</a>
-      </div>
-    </section>
-
-    <!-- Feature tiles -->
-    <section class="tiles reveal">
-      <article class="tile">
-        <div class="tile__media tile__media--sky" aria-hidden="true">
-          <div class="bubble">Calling Sam…</div>
-        </div>
-        <h3>Take calls, hands-free</h3>
-        <p>Five microphones pick up your voice and cut out wind and street noise, so you sound clear on every call.</p>
-      </article>
-      <article class="tile">
-        <div class="tile__media tile__media--sage" aria-hidden="true">
-          <div class="eq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        </div>
-        <h3>Tune in without tuning out</h3>
-        <p>Podcasts, playlists and audiobooks with deeper bass, while staying aware of what’s around you.</p>
-      </article>
-    </section>
-
-    <!-- Camera -->
-    <section class="camera" id="camera">
-      <div class="camera__head reveal">
-        <p class="eyebrow">12MP camera</p>
-        <h2>Catch the moment, not your phone</h2>
-        <p>Say “take a photo” or tap the frame. Shoot in 3K, then share straight from the app.</p>
-      </div>
-      <div class="tabs" role="tablist" aria-label="Camera modes">
-        <button role="tab" aria-selected="true" aria-controls="mode-burst" id="tab-burst">Live photo</button>
-        <button role="tab" aria-selected="false" aria-controls="mode-slow" id="tab-slow" tabindex="-1">Slow motion</button>
-        <button role="tab" aria-selected="false" aria-controls="mode-pov" id="tab-pov" tabindex="-1">Hands-free video</button>
-      </div>
-      <div class="viewer">
-        <div class="mode" id="mode-burst" role="tabpanel" aria-labelledby="tab-burst">
-          <div class="shot shot--burst" aria-hidden="true"><i></i><i></i><i></i></div>
-          <p>Captures a few seconds before and after the shutter, so you can pick the exact frame later.</p>
-        </div>
-        <div class="mode" id="mode-slow" role="tabpanel" aria-labelledby="tab-slow" hidden>
-          <div class="shot shot--slow" aria-hidden="true"><i></i></div>
-          <p>Record at 120 fps and slow down a jump, a splash or a first step.</p>
-        </div>
-        <div class="mode" id="mode-pov" role="tabpanel" aria-labelledby="tab-pov" hidden>
-          <div class="shot shot--pov" aria-hidden="true"><i></i></div>
-          <p>Up to three minutes of stabilised video from exactly where you’re looking.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Inside -->
-    <section class="inside">
-      <h2 class="reveal">Simple on the outside. Smart on the inside.</h2>
-      <div class="inside__stage reveal">
-        <svg class="inside__frames"><use href="#frames"/></svg>
-        <span class="spot" style="left:6%;top:14%"><b>12MP camera</b>Ultra-wide lens in the hinge</span>
-        <span class="spot" style="left:60%;top:2%"><b>Capture LED</b>Lights up whenever you record</span>
-        <span class="spot" style="left:2%;top:86%"><b>Open-ear speakers</b>Built into the temples</span>
-        <span class="spot" style="left:62%;top:86%"><b>Touch pad</b>Tap, swipe or hold to control</span>
-      </div>
-    </section>
-
-    <!-- Compare -->
-    <section class="compare" id="styles">
-      <h2 class="reveal">Choose the right Lumen for you</h2>
-      <div class="compare__grid">
-        <article class="card reveal" data-card>
-          <span class="badge">New</span>
-          <div class="card__media"><svg class="card__frames" style="color:#111"><use href="#frames"/></svg></div>
-          <h3>Lumen Classic (Gen 3)</h3>
-          <div class="swatches" role="radiogroup" aria-label="Frame colour">
+    <!-- 2. Style picker -->
+    <section class="section styles" id="styles">
+      <h2 class="center">Find your Lumen (Gen 3)</h2>
+      <div class="center"><a class="pill pill--outline" href="#styles"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="13" r="4"/><circle cx="17" cy="13" r="4"/><path d="M11 13h2"/></svg>Try them on</a></div>
+      <div class="styles__grid">
+        <article class="style-card" data-style>
+          <span class="tag">New</span>
+          <div class="style-card__media"><svg class="style-card__frames" style="color:#111"><use href="#frames"/></svg></div>
+          <div class="swatches" role="radiogroup" aria-label="Wayline colour">
             <button role="radio" aria-checked="true" aria-label="Matte black" style="--c:#111"></button>
+            <button role="radio" aria-checked="false" aria-label="Olive" style="--c:#4c5a3a"></button>
             <button role="radio" aria-checked="false" aria-label="Tortoise" style="--c:#6b3f1e"></button>
+            <button role="radio" aria-checked="false" aria-label="Slate" style="--c:#4a5560"></button>
+            <button role="radio" aria-checked="false" aria-label="Navy" style="--c:#28385a"></button>
             <button role="radio" aria-checked="false" aria-label="Sand" style="--c:#cdb89a"></button>
           </div>
-          <ul>
-            <li>Up to 8 hours of battery</li>
-            <li>3K Ultra HD video</li>
-            <li>Built-in assistant</li>
-            <li>Open-ear audio</li>
-          </ul>
-          <p class="card__price">From €379</p>
-          <a class="btn btn--blue" href="#top">Shop now</a>
+          <p class="style-card__eyebrow">Lumen (Gen 3)</p>
+          <h3>Wayline</h3>
+          <a class="pill pill--primary" href="#compare">Shop</a>
         </article>
-        <article class="card reveal" data-card>
-          <span class="badge">New</span>
-          <div class="card__media"><svg class="card__frames" style="color:#2d3b2f"><use href="#frames"/></svg></div>
-          <h3>Lumen Audio</h3>
-          <div class="swatches" role="radiogroup" aria-label="Frame colour">
-            <button role="radio" aria-checked="true" aria-label="Forest" style="--c:#2d3b2f"></button>
+        <article class="style-card" data-style>
+          <span class="tag">New</span>
+          <div class="style-card__media"><svg class="style-card__frames" style="color:#5a3a22;--lens:#3b2a1e"><use href="#frames"/></svg></div>
+          <div class="swatches" role="radiogroup" aria-label="Pilot colour">
+            <button role="radio" aria-checked="true" aria-label="Tortoise" style="--c:#5a3a22"></button>
             <button role="radio" aria-checked="false" aria-label="Matte black" style="--c:#111"></button>
-            <button role="radio" aria-checked="false" aria-label="Clear" style="--c:#d9dde0"></button>
+            <button role="radio" aria-checked="false" aria-label="Chestnut" style="--c:#7a3b22"></button>
+            <button role="radio" aria-checked="false" aria-label="Olive" style="--c:#4c5a3a"></button>
+            <button role="radio" aria-checked="false" aria-label="Clear" style="--c:#c9ced3"></button>
           </div>
-          <ul>
-            <li>Up to 10 hours of battery</li>
-            <li>No camera</li>
-            <li>Built-in assistant</li>
-            <li>Enhanced bass</li>
-          </ul>
-          <p class="card__price">From €299</p>
-          <a class="btn btn--blue" href="#top">Shop now</a>
+          <p class="style-card__eyebrow">Lumen (Gen 3)</p>
+          <h3>Pilot</h3>
+          <a class="pill pill--primary" href="#compare">Shop</a>
         </article>
-        <article class="card reveal" data-card>
-          <div class="card__media"><svg class="card__frames" style="color:#6b3f1e"><use href="#frames"/></svg></div>
-          <h3>Lumen Classic (Gen 2)</h3>
-          <div class="swatches" role="radiogroup" aria-label="Frame colour">
-            <button role="radio" aria-checked="true" aria-label="Tortoise" style="--c:#6b3f1e"></button>
-            <button role="radio" aria-checked="false" aria-label="Matte black" style="--c:#111"></button>
+        <article class="style-card" data-style>
+          <span class="tag">New</span>
+          <div class="style-card__media"><svg class="style-card__frames" style="color:#111;--lens:#2c3b2c"><use href="#frames"/></svg></div>
+          <div class="swatches" role="radiogroup" aria-label="Cat-eye colour">
+            <button role="radio" aria-checked="true" aria-label="Matte black" style="--c:#111"></button>
+            <button role="radio" aria-checked="false" aria-label="Tortoise" style="--c:#6b3f1e"></button>
+            <button role="radio" aria-checked="false" aria-label="Forest" style="--c:#2d3b2f"></button>
+            <button role="radio" aria-checked="false" aria-label="Amber" style="--c:#b8742f"></button>
           </div>
-          <ul>
-            <li>Up to 4 hours of battery</li>
-            <li>1080p video</li>
-            <li>Built-in assistant</li>
-            <li>Open-ear audio</li>
-          </ul>
-          <p class="card__price">From €299</p>
-          <a class="btn btn--outline" href="#top">Shop now</a>
+          <p class="style-card__eyebrow">Lumen (Gen 3)</p>
+          <h3>Cat-eye</h3>
+          <a class="pill pill--primary" href="#compare">Shop</a>
         </article>
       </div>
+      <div class="center"><a class="pill pill--outline" href="#compare">Compare styles</a></div>
     </section>
 
-    <!-- Control -->
-    <section class="control" id="control">
-      <h2 class="reveal">You’re in control</h2>
-      <div class="control__grid">
-        <article class="reveal">
-          <div class="control__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
-          <h3>Lumen app</h3>
-          <p>Set up your glasses, import photos and manage settings in one place.</p>
-          <a class="textlink" href="#faq">Get the app</a>
-        </article>
-        <article class="reveal">
-          <div class="control__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></div>
-          <h3>Privacy</h3>
-          <p>A capture light shows others when you record, and you decide what gets shared.</p>
-          <a class="textlink" href="#faq">Privacy details</a>
-        </article>
-        <article class="reveal">
-          <div class="control__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M5 9l7 1 7-1M12 10v5l-3 7M12 15l3 7"/></svg></div>
-          <h3>Accessibility</h3>
-          <p>Describe surroundings, read text aloud and make calls entirely by voice.</p>
-          <a class="textlink" href="#faq">Accessibility features</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- Family -->
-    <section class="family" id="family">
-      <div class="family__head">
-        <h2 class="reveal">Explore the Lumen family</h2>
-        <div class="family__nav">
-          <button type="button" class="icon icon--round" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-          <button type="button" class="icon icon--round" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+    <!-- 3. Assistant: a wall of example questions with a video card rising over it -->
+    <section class="assist" id="assistant">
+      <div class="assist__track">
+        <div class="assist__sticky">
+          <div class="assist__head">
+            <svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke-width="6" stroke-linecap="round"><path d="M20 6v6" stroke="#7b61ff"/><path d="M30 10l-4 4" stroke="#a259ff"/><path d="M34 20h-6" stroke="#d65cff"/><path d="M30 30l-4-4" stroke="#ff5ca8"/><path d="M20 34v-6" stroke="#5c8dff"/><path d="M10 30l4-4" stroke="#4fa3ff"/><path d="M6 20h6" stroke="#6f7cff"/><path d="M10 10l4 4" stroke="#8a6bff"/></g></svg>
+            <h2>“Hey Lumen,”</h2>
+            <p class="assist__query" id="query" aria-live="polite">what’s the story behind this building?</p>
+          </div>
+          <p class="assist__wall" aria-hidden="true">how do I say thank you in Portuguese, what wine goes with mushroom risotto, read me the next step of this recipe, which platform does my train leave from, what kind of tree is this, convert 40 dollars to euros, text Alex that I’m running late, how far is the nearest pharmacy, describe what’s in front of me, play something calm for the walk home, what’s the rating of this restaurant, remind me to call the plumber tomorrow</p>
+          <div class="assist__card media media--street" aria-hidden="true"></div>
         </div>
       </div>
-      <div class="family__track" id="track">
-        <a class="promo promo--dusk" href="#styles">
-          <svg class="promo__frames" style="--lens:#3b2a1e"><use href="#frames"/></svg>
-          <div><h3>Lumen Audio</h3><p>All sound, no camera.</p></div>
-        </a>
-        <a class="promo promo--sea" href="#styles">
-          <svg class="promo__frames" style="color:#6b3f1e"><use href="#frames"/></svg>
-          <div><h3>Lumen (Gen 2)</h3><p>The original, now for less.</p></div>
-        </a>
-        <a class="promo promo--sun" href="#styles">
-          <svg class="promo__frames" style="--lens:#4a3b12"><use href="#frames"/></svg>
-          <div><h3>Lumen Sport</h3><p>Wraparound fit, sweat resistant.</p></div>
-        </a>
+      <p class="assist__body">Get translations, directions, recommendations and quick answers about what you’re looking at. Just ask out loud, wherever you are.</p>
+    </section>
+
+    <!-- 4. Full-width banner -->
+    <section class="banner-wrap">
+      <div class="banner media media--olive">
+        <svg class="banner__frames" style="--lens:#3b2a1e"><use href="#frames"/></svg>
+        <div class="banner__copy">
+          <h2>Meet Lumen Audio</h2>
+          <p>Our audio-only frames, made for listening. From €299.</p>
+          <div class="pills">
+            <a class="pill pill--primary" href="#compare">Shop</a>
+            <a class="pill pill--glass" href="#family">Learn more</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="faq" id="faq">
-      <h2 class="reveal">Frequently asked questions</h2>
-      <div class="faq__list">
-        <details>
-          <summary>What’s new in Lumen (Gen 3)?</summary>
-          <p>Gen 3 doubles battery life to around 8 hours, records in 3K and weighs less than Gen 2, in the same classic shape.</p>
-        </details>
-        <details>
-          <summary>What can Lumen glasses do?</summary>
-          <p>Take photos and video, play music, take calls, send messages and answer questions about what you see, all by voice or touch.</p>
-        </details>
-        <details>
-          <summary>Is there a monthly fee?</summary>
-          <p>No. The app and the built-in assistant are included with your glasses.</p>
-        </details>
-        <details>
-          <summary>Can I make phone calls?</summary>
-          <p>Yes. Pair them with your phone over Bluetooth to take and make calls hands-free.</p>
-        </details>
-        <details>
-          <summary>How long does the battery last?</summary>
-          <p>Around 8 hours of typical use, with up to 48 more hours from the charging case.</p>
-        </details>
-        <details>
-          <summary>Do they work with prescription lenses?</summary>
-          <p>Yes. Most frames support single-vision, progressive and transition lenses.</p>
-        </details>
-        <details>
-          <summary>How much storage do they have?</summary>
-          <p>32GB, enough for over 1,000 photos or about 100 short videos before you import them.</p>
-        </details>
-        <details>
-          <summary>My glasses slip down. How do I fix that?</summary>
-          <p>Visit an optician to adjust the temples, or try a frame in a narrower fit.</p>
-        </details>
+    <!-- 5. Calls -->
+    <section class="section feature">
+      <div class="feature__head">
+        <h2>Calls and messages, no hands needed</h2>
+        <p>Send a voice note, reply to a text or join a video call while your hands are full. Your phone stays in your pocket.</p>
       </div>
+      <div class="feature__media media media--sky"><span class="chip chip--light">Calling Sam…</span></div>
+    </section>
+
+    <!-- 6. Audio -->
+    <section class="section feature" id="audio">
+      <div class="feature__head">
+        <h2>Your soundtrack, your surroundings</h2>
+        <p>Stream from your favourite apps through open-ear speakers. Clear calls and private listening, while you still hear the street.</p>
+        <div class="apps" aria-label="Works with your music apps"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="feature__media media media--blue">
+        <span class="float-chip"><span class="chip">Playing music…</span><span class="chip-icon"><svg viewBox="0 0 40 40"><g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"><path d="M20 6v6M30 10l-4 4M34 20h-6M30 30l-4-4M20 34v-6M10 30l4-4M6 20h6M10 10l4 4"/></g></svg></span></span>
+      </div>
+    </section>
+
+    <!-- 7. Camera -->
+    <section class="section feature" id="camera">
+      <div class="feature__head">
+        <h2>Shoot what you see, as you see it</h2>
+        <p>A 12MP camera records 3K video from your point of view. Ask for a photo or a clip, and keep your hands free.</p>
+      </div>
+      <div class="feature__media media media--grey"></div>
+      <div class="duo">
+        <article>
+          <div class="duo__media media media--marble"></div>
+          <h3>Live photo</h3>
+          <p>Takes a quick burst around the shutter, so you can choose the sharpest frame afterwards.</p>
+        </article>
+        <article>
+          <div class="duo__media media media--studio">
+            <span class="float-chip float-chip--voice"><span class="chip-icon chip-icon--dark"><svg viewBox="0 0 24 24"><path d="M6 10v4M10 7v10M14 9v6M18 11v2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span><span class="chip">“Hey Lumen, record in slow motion”</span></span>
+          </div>
+          <h3>Slow motion</h3>
+          <p>Stretch out the moment with smooth, high frame rate playback.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 8. Hotspot diagram -->
+    <section class="section hotspots" id="tech">
+      <h2 class="center">What’s inside the frame</h2>
+      <p class="center sub">Hover or tap a point to see the technology built into every pair.</p>
+      <div class="hotspots__stage">
+        <svg class="hotspots__frames" viewBox="0 0 400 190" style="color:#5a3a22;--lens:#4a3626"><use href="#frames-arms"/></svg>
+        <button class="hotspot" type="button" style="left:20%;top:22%" data-title="Open-ear speakers" data-body="Speakers in each temple point sound towards your ears, so people nearby hear very little.">
+          <span class="hotspot__dot"></span><span class="hotspot__label">Open-ear speakers</span>
+        </button>
+        <button class="hotspot" type="button" style="left:80%;top:22%" data-title="All-day battery" data-body="Up to 8 hours of typical use, plus up to 48 more from the charging case.">
+          <span class="hotspot__dot"></span><span class="hotspot__label">All-day battery</span>
+        </button>
+        <button class="hotspot" type="button" style="left:6%;top:50%" data-title="12MP camera" data-body="An ultra-wide camera tucked into the hinge shoots photos and 3K video.">
+          <span class="hotspot__dot"></span><span class="hotspot__label">12MP camera</span>
+        </button>
+        <button class="hotspot" type="button" style="left:50%;top:50%" data-title="Five-mic array" data-body="Microphones around the frame pick up your voice and filter out wind and background noise.">
+          <span class="hotspot__dot"></span><span class="hotspot__label">Five-mic array</span>
+        </button>
+        <button class="hotspot hotspot--left" type="button" style="left:94%;top:50%" data-title="Capture light" data-body="An LED lights up whenever the camera is recording, so people around you know.">
+          <span class="hotspot__dot"></span><span class="hotspot__label">Capture light</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 9. Compare (columns are filled from data in main.js) -->
+    <section class="section compare" id="compare">
+      <p class="lockup lockup--dark center"><span>LUMEN</span><i></i><span>Compare</span></p>
+      <h2 class="center">Which Lumen is right for you?</h2>
+      <div class="center"><a class="pill pill--outline" href="#compare">Compare all glasses</a></div>
+      <div class="compare__grid">
+        <div class="compare__col" data-compare="0"></div>
+        <div class="compare__col" data-compare="1"></div>
+        <div class="compare__col" data-compare="2"></div>
+      </div>
+    </section>
+
+    <!-- 10. Control -->
+    <section class="section control" id="control">
+      <h2 class="center">Your glasses, your rules</h2>
+      <p class="center sub">Choose what you share and how your glasses work for you.</p>
+      <div class="control__grid">
+        <article>
+          <div class="control__media media media--soft">
+            <div class="phone"><div class="phone__screen"><b>Wayline</b><svg style="color:#111"><use href="#frames"/></svg><span></span><span></span><span></span></div></div>
+          </div>
+          <h3>Lumen app</h3>
+          <p>Set up your glasses, change settings, import photos and talk to your assistant in one app. The app is required to use your glasses.</p>
+        </article>
+        <article>
+          <div class="control__media media media--portrait"></div>
+          <h3>Privacy</h3>
+          <p>A light on the frame shows when you’re taking photos or video. If it’s covered, the camera won’t record. <a href="#faq">Learn more</a></p>
+        </article>
+        <article>
+          <div class="control__media media media--closeup"><svg class="control__frames" style="color:#5a3a22;--lens:#4a3626"><use href="#frames"/></svg></div>
+          <h3>Accessibility</h3>
+          <p>Hear descriptions of your surroundings, have text read aloud and make calls entirely by voice.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 11. Family -->
+    <section class="section family" id="family">
+      <h2 class="center">More from Lumen</h2>
+      <div class="family__grid">
+        <article class="family-card media media--knit">
+          <div class="family-card__copy">
+            <p>Audio glasses</p>
+            <h2>Lumen Audio</h2>
+            <div class="pills"><a class="pill pill--primary" href="#compare">Shop</a><a class="pill pill--glass" href="#compare">Learn more</a></div>
+          </div>
+        </article>
+        <article class="family-card media media--leather">
+          <div class="family-card__copy">
+            <p>Our best-seller</p>
+            <h2>Lumen (Gen 2)</h2>
+            <div class="pills"><a class="pill pill--primary" href="#compare">Shop</a><a class="pill pill--glass" href="#compare">Learn more</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 12. FAQ -->
+    <section class="section faq" id="faq">
+      <h2>Frequently asked questions</h2>
+      <div class="faq__list">
+        <details open><summary>What’s new in Lumen (Gen 3)?</summary><p>Gen 3 lasts up to 8 hours on a charge, records 3K video and has a lighter frame and a customisable action button.</p></details>
+        <details><summary>What can Lumen glasses do?</summary><p>Take photos and video, play music, make calls, send messages and answer questions about what you see, all by voice or touch.</p></details>
+        <details><summary>Is there a subscription?</summary><p>No. The app and assistant come with your glasses at no extra cost.</p></details>
+        <details><summary>Can I make phone calls?</summary><p>Yes. Pair with your phone over Bluetooth to make and take calls hands-free.</p></details>
+        <details><summary>How long does the battery last?</summary><p>Up to 8 hours of typical use, with up to 48 more hours from the charging case.</p></details>
+        <details><summary>How is Gen 3 different from Gen 2?</summary><p>Gen 3 roughly doubles battery life, adds 3K video and an action button, and weighs less.</p></details>
+        <details><summary>Can I listen to music?</summary><p>Yes. Stream from your favourite apps through the open-ear speakers.</p></details>
+        <details><summary>Does every generation use the same case?</summary><p>No. Each generation has its own charging case, shaped to fit its frames.</p></details>
+        <details><summary>Where can I read about privacy?</summary><p>See the privacy section of the Lumen app, or our privacy centre online.</p></details>
+        <details><summary>How much storage is there?</summary><p>32GB, enough for over 1,000 photos or about 100 short videos.</p></details>
+        <details><summary>Which styles are available?</summary><p>Wayline, Pilot and Cat-eye, each in several colours and lens options.</p></details>
+        <details><summary>My glasses slip down. What can I do?</summary><p>An optician can adjust the temples for you, or you can try a narrower fit.</p></details>
+      </div>
+    </section>
+
+    <!-- 13. Newsletter -->
+    <section class="newsletter">
+      <p class="newsletter__label">Get news and updates from Lumen</p>
+      <form class="newsletter__form" id="newsletter">
+        <div class="newsletter__row">
+          <label class="visually-hidden" for="email">Email</label>
+          <input id="email" type="email" placeholder="Email" required>
+          <button class="pill pill--outline pill--muted" type="submit">Sign up</button>
+        </div>
+        <p class="fine">By signing up, you agree to receive marketing emails from Lumen. You can unsubscribe at any time.</p>
+      </form>
     </section>
   </main>
 
+  <!-- 14. Footer -->
   <footer class="footer">
-    <div class="footer__cols">
-      <div><h4>Shop</h4><a href="#styles">Glasses</a><a href="#audio">Audio</a><a href="#styles">Accessories</a></div>
-      <div><h4>Support</h4><a href="#faq">FAQ</a><a href="#faq">Returns</a><a href="#faq">Warranty</a></div>
-      <div><h4>About</h4><a href="#control">Privacy</a><a href="#control">Accessibility</a><a href="#top">Careers</a></div>
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="logo logo--dark" href="#top" aria-label="Lumen home"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="12" r="5"/><circle cx="17" cy="12" r="5"/></svg>Lumen</a>
+        <div class="social">
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/></svg></a>
+          <a href="#top" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10 9.5v5l4-2.5z"/></svg></a>
+          <a href="#top" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13c0-1.5 1-2 2-2s2 .5 2 2v3"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__cols">
+        <div><h4>Shop</h4><a href="#styles">Smart glasses</a><a href="#family">Audio glasses</a><a href="#compare">Compare glasses</a><a href="#top">Accessories</a><a href="#top">Prescription lenses</a></div>
+        <div><h4>Support</h4><a href="#faq">Help centre</a><a href="#top">Order status</a><a href="#top">Returns</a><a href="#top">Find a store</a><a href="#top">Warranty</a></div>
+        <div><h4>Company</h4><a href="#top">About</a><a href="#top">Careers</a><a href="#top">Press</a><a href="#control">Accessibility</a></div>
+        <div><h4>Legal</h4><a href="#control">Privacy policy</a><a href="#top">Terms of sale</a><a href="#top">Cookie policy</a></div>
+      </div>
     </div>
-    <p class="footer__legal">© 2026 Lumen. Placeholder product for demo purposes.</p>
+    <div class="footer__bottom">
+      <a href="#top">Sweden (English)</a>
+      <div class="fine">
+        <p>Lumen is a placeholder product used for this page draft. Names, prices and specifications are examples.</p>
+        <p>© 2026 Lumen.</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Hotspot detail sheet -->
+  <dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+    <button class="icon sheet__close" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="sheet__media media media--soft"><svg style="color:#5a3a22;--lens:#4a3626"><use href="#frames"/></svg></div>
+    <h3 id="sheet-title"></h3>
+    <p id="sheet-body"></p>
+  </dialog>
 </body>
 </html>
