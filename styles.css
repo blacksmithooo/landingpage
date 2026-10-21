@@ -274,9 +274,11 @@ svg { display: block; }
   .productbar__price { font-size: 14px; }
   .productbar .pill { padding: 8px 16px; min-height: 40px; font-size: 14px; }
   .duo, .family__grid, .newsletter, .footer__top, .footer__bottom { grid-template-columns: 1fr; }
-  .banner { margin: 0; min-height: 70vh; }
+  .hero { height: auto; min-height: 0; aspect-ratio: 3 / 4; }
+  .banner { margin: 0; min-height: 0; aspect-ratio: 1 / 1; }
   .assist__card { width: 82vw; }
-  .feature__media { aspect-ratio: 4 / 5; }
+  .feature__media, .duo__media { aspect-ratio: 4 / 3; }
+  .family-card { aspect-ratio: 1 / 1; }
   .float-chip { left: 8%; }
   .hotspot { height: 48px; transform: translate(-24px, -50%); }
   .hotspot__dot { width: 24px; height: 24px; margin: 12px; }

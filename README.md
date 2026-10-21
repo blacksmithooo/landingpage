@@ -35,7 +35,7 @@ The layout mirrors a modern smart-glasses product page, section by section:
 "Lumen" is a placeholder product. All copy, prices and artwork are
 placeholders to swap for real content. All imagery is AI-generated:
 
-- `assets/photos/`: lifestyle shots (stills and frames from the hero video shoot, plus `app.jpg`, the Lumen app in hand).
+- `assets/photos/`: lifestyle shots (stills and frames from the hero video shoot, plus `app.jpg`, the branded Lumen app in hand).
 - `assets/products/`: product shots on white, one per style and colourway
   (`<style>-<colour>.jpg`), plus `hotspot.jpg` for the "What's inside the frame"
   diagram. Each colourway was generated from its style's base shot so the shape
@@ -53,6 +53,12 @@ they need re-placing if that image changes.
 five AI-generated shots of the same placeholder glasses, joined with 0.3s
 cross-dissolves. The end dissolves back into the opening so the loop has no
 hard cut. `assets/hero-poster.jpg` is its first frame.
+
+Phones (up to 720px wide) get `assets/hero-mobile.mp4` instead: a 3:4 portrait
+cut of the same edit (810×1080, about 3.3MB), with each shot's crop placed, and
+panned where the subject moves, so the glasses stay in frame. It has its own
+poster, `assets/hero-mobile-poster.jpg`. On phones the hero is 3:4 rather than
+full height, and the photo slots use wider crops so less of each image is cut off.
 
 It was made in Higgsfield, loosely following
 [`docs/hero-video-prompts.md`](docs/hero-video-prompts.md), with these

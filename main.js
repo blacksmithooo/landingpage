@@ -37,6 +37,7 @@ document.getElementById('nav').addEventListener('click', (e) => {
 // Hero video play / pause. Reduced motion: don't autoplay, start paused.
 const play = document.querySelector('.hero__play');
 const video = hero.querySelector('.hero__video');
+if (matchMedia('(max-width: 720px)').matches) video.poster = 'assets/hero-mobile-poster.jpg'; // matches the portrait cut
 const showPaused = (paused) => {
   hero.classList.toggle('is-paused', paused);
   play.setAttribute('aria-pressed', paused);
