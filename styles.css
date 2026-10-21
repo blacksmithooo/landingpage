@@ -34,6 +34,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + var(--bar-h) + 16px); }
+html.lenis { scroll-behavior: auto; } /* Lenis does the smoothing */
 body { margin: 0; font: 400 16px/1.5 var(--sans); color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
 h1, h2, h3, h4, p { margin: 0; }
 h1, h2 { font-size: var(--h2); line-height: 1.16; font-weight: 500; letter-spacing: -.01em; }
@@ -71,20 +72,11 @@ svg { display: block; }
 .float-chip--voice { left: auto; right: 6%; top: 30%; }
 .float-chip--voice .chip { border-radius: 10px; font-size: 14px; max-width: 220px; }
 
-/* Placeholder media: swap these gradients for real photography / video */
-.media { position: relative; overflow: hidden; border-radius: var(--radius); background: #d9dde1; }
-.media--street { background: linear-gradient(160deg, #6b5a4a, #2f3a36 60%, #1e2422); }
-.media--olive { background: radial-gradient(70% 90% at 50% 30%, #6e7445, #3c3f23 60%, #222313); }
-.media--sky { background: linear-gradient(170deg, #d9eef8 0%, #9cc7e2 45%, #c99f7c 75%, #3a2d24 100%); }
-.media--blue { background: linear-gradient(200deg, #2d7fb8 0%, #4aa0d6 35%, #23384a 70%, #7c1d22 100%); }
-.media--grey { background: linear-gradient(180deg, #8d9093, #4d5154 55%, #26292b); }
-.media--marble { background: radial-gradient(40% 35% at 55% 55%, #f2a07a, transparent 70%), linear-gradient(135deg, #f0eeea, #d7d4ce 60%, #c4c0b8); }
-.media--studio { background: radial-gradient(45% 55% at 50% 45%, #6a4b3a, transparent 70%), linear-gradient(180deg, #f1f1f1, #c9ccd4 70%, #1e2a5c); }
+/* Media: a photo sits under the slot's chips and copy (isolation keeps it below them) */
+.media { position: relative; overflow: hidden; border-radius: var(--radius); background: #d9dde1; isolation: isolate; }
+.media__img { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; }
+.media--shade::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,.6) 100%); }
 .media--soft { background: var(--card); }
-.media--portrait { background: radial-gradient(35% 45% at 50% 40%, #2a2a2a, transparent 70%), linear-gradient(180deg, #c8c8c8, #8f8f8f 60%, #111 100%); }
-.media--closeup { background: #e9e6e2; }
-.media--knit { background: radial-gradient(60% 60% at 40% 35%, #c27b3a, transparent 70%), linear-gradient(180deg, #8f6a4b, #3e2c20); }
-.media--leather { background: radial-gradient(50% 55% at 55% 35%, #4a4a4a, transparent 70%), linear-gradient(180deg, #9a9a9a, #1b1b1b); }
 
 /* ---------- Header + product bar ---------- */
 .topbar { position: fixed; inset: 0 0 auto; z-index: 50; }
@@ -156,7 +148,6 @@ svg { display: block; }
 /* Full-width banner with overlay copy */
 .banner-wrap { padding: var(--section) var(--gutter) 0; }
 .banner { min-height: min(80vh, 760px); margin: 0 var(--gutter); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: #fff; text-align: center; padding: 48px 24px; }
-.banner__frames { position: absolute; top: 18%; left: 50%; width: min(40vw, 420px); aspect-ratio: 400 / 140; height: auto; transform: translateX(-50%); color: #111; }
 .banner__copy { position: relative; }
 .banner__copy > p { margin-top: 12px; }
 
@@ -223,7 +214,6 @@ svg { display: block; }
 .control h3 { font-size: 28px; font-weight: 400; }
 .control article p { margin-top: 16px; font-size: 14px; color: var(--muted); }
 .control article a { color: var(--blue); font-weight: 600; text-decoration: none; }
-.control__frames { width: 150%; height: auto; aspect-ratio: 400 / 140; transform: translateX(22%) rotate(-12deg); }
 .phone { width: 62%; aspect-ratio: 9 / 18; margin-top: 18%; padding: 8px; border-radius: 36px; background: #111; }
 .phone__screen { height: 100%; border-radius: 28px; background: #fff; padding: 36px 14px; text-align: center; font-size: 13px; }
 .phone__screen svg { width: 80%; margin: 12px auto; aspect-ratio: 400 / 140; height: auto; }

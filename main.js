@@ -1,5 +1,11 @@
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// Smooth, weighted scrolling (Lenis). A lower lerp means more glide.
+// Anchor links honour the scroll-padding-top set in styles.css.
+const lenis = !reduced && window.Lenis
+  ? new Lenis({ autoRaf: true, lerp: 0.07, anchors: true })
+  : null;
+
 // Header + product bar: header is transparent over the hero and turns white
 // after it. The product bar rides at the bottom of the hero, then sticks
 // under the header.
@@ -36,7 +42,7 @@ const showPaused = (paused) => {
   play.setAttribute('aria-pressed', paused);
   play.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
 };
-if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+if (reduced) {
   video.removeAttribute('autoplay');
   video.pause();
   showPaused(true);
@@ -97,10 +103,12 @@ document.querySelectorAll('.hotspot').forEach((spot) => {
     sheet.querySelector('#sheet-title').textContent = spot.dataset.title;
     sheet.querySelector('#sheet-body').textContent = spot.dataset.body;
     sheet.showModal();
+    lenis?.stop();
   });
 });
 sheet.querySelector('.sheet__close').addEventListener('click', () => sheet.close());
 sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
+sheet.addEventListener('close', () => lenis?.start());
 
 // Compare: each column has a model picker
 const icon = {

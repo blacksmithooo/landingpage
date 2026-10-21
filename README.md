@@ -32,8 +32,12 @@ The layout mirrors a modern smart-glasses product page, section by section:
 | `pill--glass` | Frosted light grey with blur. Secondary actions on top of media. |
 | `chip` | Dark frosted label floating over media. |
 
-"Lumen" is a placeholder product. All copy, prices and artwork (CSS gradients
-and an inline SVG frame) are placeholders to swap for real content.
+"Lumen" is a placeholder product. All copy, prices and artwork are
+placeholders to swap for real content. Photo slots use AI-generated images of
+the placeholder glasses (stills and frames from the hero video shoot, in
+`assets/photos/`). The style cards, hotspot diagram, compare columns, phone
+mockup and detail sheet still use the inline SVG frame, because their
+swatches and hotspots recolour or position the drawing.
 
 ### Hero video
 
@@ -56,8 +60,16 @@ the bottom instead.
 
 - `index.html`: markup
 - `styles.css`: styles, with design tokens at the top under `:root`
-- `assets/`: hero video and its poster image
-- `main.js`: header/product bar, menu, hero video play/pause, swatches, assistant scroll effect, hotspots, compare columns, FAQ, scroll reveals
+- `assets/`: hero video and its poster image; `assets/photos/` holds the section photos
+- `main.js`: smooth scrolling, header/product bar, menu, hero video play/pause, swatches, assistant scroll effect, hotspots, compare columns, FAQ, scroll reveals
+
+## Smooth scrolling
+
+Scrolling is smoothed with [Lenis](https://github.com/darkroomengineering/lenis)
+(loaded from unpkg, pinned to 1.3.26) for a weighted, gliding feel. Tune the
+glide with `lerp` in `main.js` (lower is floatier). Anchor links still respect
+`scroll-padding-top`. Touch devices keep native scrolling, and Lenis is off
+with `prefers-reduced-motion`.
 
 ## Fonts
 
