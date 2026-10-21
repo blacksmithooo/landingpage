@@ -73,7 +73,6 @@ svg { display: block; }
 
 /* Placeholder media: swap these gradients for real photography / video */
 .media { position: relative; overflow: hidden; border-radius: var(--radius); background: #d9dde1; }
-.media--hero { border-radius: 0; background: radial-gradient(60% 70% at 50% 25%, #a8352b 0%, #5c1d18 45%, #1d1413 80%), #1d1413; }
 .media--street { background: linear-gradient(160deg, #6b5a4a, #2f3a36 60%, #1e2422); }
 .media--olive { background: radial-gradient(70% 90% at 50% 30%, #6e7445, #3c3f23 60%, #222313); }
 .media--sky { background: linear-gradient(170deg, #d9eef8 0%, #9cc7e2 45%, #c99f7c 75%, #3a2d24 100%); }
@@ -113,17 +112,15 @@ svg { display: block; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; height: calc(100svh - var(--bar-h)); min-height: 520px; display: flex; align-items: flex-end; justify-content: center; color: #fff; text-align: center; overflow: hidden; }
-.hero__media { position: absolute; inset: 0; display: grid; place-items: start center; padding-top: 18vh; }
-.hero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 25%, transparent 50%, rgba(0,0,0,.45) 100%); }
-.hero__frames { width: min(56vw, 560px); aspect-ratio: 400 / 140; height: auto; color: #121212; filter: drop-shadow(0 30px 50px rgba(0,0,0,.5)); animation: float 7s ease-in-out infinite; }
-.hero.is-paused .hero__frames { animation-play-state: paused; }
+.hero__media { position: absolute; inset: 0; background: #111; }
+.hero__video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 25%, transparent 45%, rgba(0,0,0,.6) 100%); }
 .hero__copy { position: relative; z-index: 1; max-width: 680px; padding: 0 var(--gutter) clamp(40px, 7vh, 72px); }
 .hero__sub { margin-top: 16px; font-size: 16px; }
 .hero__play { position: absolute; z-index: 1; right: var(--gutter); bottom: 24px; width: 32px; height: 32px; border-radius: 50%; border: 0; background: rgba(255,255,255,.2); display: grid; place-items: center; }
 .hero__play svg { width: 14px; height: 14px; fill: #fff; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; }
 .hero__play .i-play, .hero.is-paused .i-pause { display: none; }
 .hero.is-paused .i-play { display: block; }
-@keyframes float { 50% { transform: translateY(-12px); } }
 
 /* Co-brand style lockup */
 .lockup { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 20px; font-size: 15px; letter-spacing: .2em; font-weight: 600; }

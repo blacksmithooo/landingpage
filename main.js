@@ -28,12 +28,24 @@ document.getElementById('nav').addEventListener('click', (e) => {
   menu.setAttribute('aria-expanded', 'false');
 });
 
-// Hero play / pause
+// Hero video play / pause. Reduced motion: don't autoplay, start paused.
 const play = document.querySelector('.hero__play');
-play.addEventListener('click', () => {
-  const paused = hero.classList.toggle('is-paused');
+const video = hero.querySelector('.hero__video');
+const showPaused = (paused) => {
+  hero.classList.toggle('is-paused', paused);
   play.setAttribute('aria-pressed', paused);
   play.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+};
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  video.removeAttribute('autoplay');
+  video.pause();
+  showPaused(true);
+}
+video.addEventListener('play', () => showPaused(false));
+video.addEventListener('pause', () => showPaused(true));
+play.addEventListener('click', () => {
+  if (video.paused) video.play().catch(() => {});
+  else video.pause();
 });
 
 // Style cards: swatches recolour the frames

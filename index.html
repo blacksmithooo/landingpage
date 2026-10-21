@@ -73,8 +73,10 @@
   <main id="main">
     <!-- 1. Hero -->
     <section class="hero" id="top">
-      <div class="hero__media media media--hero" aria-hidden="true">
-        <svg class="hero__frames"><use href="#frames"/></svg>
+      <div class="hero__media" aria-hidden="true">
+        <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+          <source src="assets/hero.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="hero__copy">
         <p class="lockup"><span>LUMEN</span><i></i><span>Gen 3</span></p>

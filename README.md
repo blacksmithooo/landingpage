@@ -12,7 +12,7 @@ Or open `index.html` in a browser. There's no build step.
 The layout mirrors a modern smart-glasses product page, section by section:
 
 1. **Header + product bar**: header is transparent over the hero and turns white after it. The product bar (name, "starting at" price, blue pill) sits at the bottom of the hero, then sticks under the header.
-2. **Hero**: full-bleed media, brand lockup, headline, subline, pause button.
+2. **Hero**: full-bleed looping video under a dark gradient, brand lockup, headline, subline, and a play/pause button that controls the video. With `prefers-reduced-motion` the video doesn't autoplay and shows its poster.
 3. **Style picker**: three grey cards with a "New" tag, colour swatches, name and a "Shop" pill, plus "Try them on" and "Compare styles" outline pills.
 4. **Assistant**: "Hey Lumen," with cycling questions over a faded wall of example questions. A video card rises over it as you scroll.
 5. **Banner**: full-width media with overlay copy, a blue "Shop" pill and a frosted "Learn more" pill.
@@ -35,11 +35,29 @@ The layout mirrors a modern smart-glasses product page, section by section:
 "Lumen" is a placeholder product. All copy, prices and artwork (CSS gradients
 and an inline SVG frame) are placeholders to swap for real content.
 
+### Hero video
+
+`assets/hero.mp4` is a 20-second silent loop (H.264, 1920×1080, about 7.6MB):
+five AI-generated shots of the same placeholder glasses, joined with 0.3s
+cross-dissolves. The end dissolves back into the opening so the loop has no
+hard cut. `assets/hero-poster.jpg` is its first frame.
+
+It was made in Higgsfield, loosely following
+[`docs/hero-video-prompts.md`](docs/hero-video-prompts.md), with these
+differences: Nano Banana Pro and the doc's video models aren't available to
+our API key, so the stills were made with Grok Imagine Image 2.0 (with the
+three master glasses images as references) and animated with Kling O3 image
+reference (each still as the first frame, plus the masters as references). The
+"darker lower third" line in the style prompt was reworded because the image
+model drew it as a literal black band; the page's gradient overlay darkens
+the bottom instead.
+
 ## Files
 
 - `index.html`: markup
 - `styles.css`: styles, with design tokens at the top under `:root`
-- `main.js`: header/product bar, menu, hero pause, swatches, assistant scroll effect, hotspots, compare columns, FAQ, scroll reveals
+- `assets/`: hero video and its poster image
+- `main.js`: header/product bar, menu, hero video play/pause, swatches, assistant scroll effect, hotspots, compare columns, FAQ, scroll reveals
 
 ## Fonts
 
