@@ -3,235 +3,329 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blacksmith — The Product Launch Studio</title>
-  <meta name="description" content="Our pod of senior creatives armed with AI have one mission—make your audience give a damn. Defy indifference in 4 weeks, or less.">
+  <title>Lumen Smart Glasses (Gen 3)</title>
+  <meta name="description" content="Lumen (Gen 3): classic frames with a built-in camera, open-ear audio and a voice assistant that sees what you see.">
   <link rel="preload" href="fonts/SuisseWorks-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/SuisseIntl-Medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/SuisseIntlMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css">
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" defer></script>
   <script src="main.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <div class="promo">Stop briefing. Start shipping. Our Claude Code courses for marketing teams are now <span class="accent">20% off</span>.</div>
+  <!-- Inline art, reused across the page -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="frames" viewBox="0 0 400 140">
+        <path d="M8 40c0-10 6-16 18-17l132-6c14 0 22 8 22 22v26c0 34-22 56-60 56H76C34 121 8 96 8 62z" fill="currentColor"/>
+        <path d="M392 40c0-10-6-16-18-17l-132-6c-14 0-22 8-22 22v26c0 34 22 56 60 56h44c42 0 68-25 68-59z" fill="currentColor"/>
+        <path d="M180 44c8-8 32-8 40 0" stroke="currentColor" stroke-width="10" fill="none"/>
+        <path d="M24 38l128-5c10 0 15 5 15 14v20c0 28-17 43-48 43H80c-34 0-56-19-56-46z" fill="var(--lens, #1b1f24)"/>
+        <path d="M376 38l-128-5c-10 0-15 5-15 14v20c0 28 17 43 48 43h39c34 0 56-19 56-46z" fill="var(--lens, #1b1f24)"/>
+        <path d="M40 46l40-2-30 40c-8-10-12-22-10-38z" fill="#fff" opacity=".12"/>
+        <path d="M256 44l40-2-32 44c-8-12-10-26-8-42z" fill="#fff" opacity=".12"/>
+        <circle cx="22" cy="34" r="4" fill="#0b0b0b" opacity=".7"/>
+        <circle cx="378" cy="34" r="4" fill="#0b0b0b" opacity=".7"/>
+      </symbol>
+    </defs>
+  </svg>
 
-  <header class="header">
-    <a class="header__logo" href="#top" aria-label="Blacksmith home">
-      <img src="assets/blacksmith-logo.svg" width="765" height="94" alt="Blacksmith">
+  <header class="header" id="header">
+    <a class="logo" href="#top" aria-label="Lumen home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="17" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
+      Lumen
     </a>
     <nav class="nav" id="nav" aria-label="Main">
-      <div class="nav__links">
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#work">Work</a>
-        <a href="#clients">Clients</a>
-      </div>
-      <a class="btn btn--red nav__cta" href="#contact">Start a launch<svg class="arrow" viewBox="0 0 46 16" aria-hidden="true"><path d="M0 8h44M36 1l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+      <a href="#styles">Glasses</a>
+      <a href="#audio">Audio</a>
+      <a href="#camera">Camera</a>
+      <a href="#control">App</a>
+      <a href="#faq">Support</a>
     </nav>
-    <button class="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <div class="header__icons">
+      <button class="icon" type="button" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button>
+      <button class="icon" type="button" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 13H7z"/><path d="M9 8a3 3 0 016 0"/></svg></button>
+      <button class="icon menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
+    </div>
   </header>
 
   <main id="main">
     <!-- Hero -->
     <section class="hero" id="top">
-      <div class="hero__panel">
-        <p class="label hero__eyebrow">The Product Launch Studio</p>
-        <h1 class="hero__title">Indifference is Your Enemy<span class="accent">.</span></h1>
-        <div class="hero__foot">
-          <p class="hero__lede">Our pod of senior creatives armed with AI have one mission—make your audience give a damn.</p>
-          <a class="btn btn--red" href="#contact">Start a launch<svg class="arrow" viewBox="0 0 46 16" aria-hidden="true"><path d="M0 8h44M36 1l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
-        </div>
+      <div class="hero__media" aria-hidden="true">
+        <div class="hero__glow"></div>
+        <svg class="hero__frames"><use href="#frames"/></svg>
       </div>
+      <div class="hero__copy">
+        <p class="hero__brand">Lumen <span>Gen 3</span></p>
+        <h1>Classic frames.<br>A sharper way to see.</h1>
+        <p class="hero__sub">Camera, audio and an assistant, built into glasses you’d wear anyway.</p>
+      </div>
+      <button class="hero__play" type="button" aria-label="Pause animation" aria-pressed="false">
+        <svg class="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>
+      </button>
     </section>
+
+    <!-- Sticky buy bar -->
+    <div class="buybar" id="buybar">
+      <p class="buybar__name"><span class="buybar__cat">Smart glasses <span>|</span></span> Lumen (Gen 3)</p>
+      <div class="buybar__right">
+        <p class="buybar__price"><span>Starting at</span>€379</p>
+        <a class="btn btn--blue" href="#styles">Shop all styles</a>
+      </div>
+    </div>
 
     <!-- Intro -->
     <section class="intro reveal">
-      <p class="label">How we help you</p>
-      <h2 class="intro__title">Great products die quietly. We make sure yours doesn’t<span class="accent">.</span></h2>
-      <p class="intro__body">Most launches don’t fail because the product is bad. They fail because nobody cares. We find the story worth caring about, then put it everywhere your audience looks.</p>
-      <div class="intro__links">
-        <a class="textlink" href="#process">How it works<svg class="arrow" viewBox="0 0 46 16" aria-hidden="true"><path d="M0 8h44M36 1l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
-        <a class="textlink" href="#work">See the work<svg class="arrow" viewBox="0 0 46 16" aria-hidden="true"><path d="M0 8h44M36 1l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+      <h2>Upgrade your everyday with Lumen (Gen 3)</h2>
+      <p>Twice the battery, a sharper 3K camera and a lighter frame. Same timeless shape.</p>
+      <div class="stats">
+        <div><strong>8h</strong><span>Typical battery life</span></div>
+        <div><strong>3K</strong><span>Ultra HD video</span></div>
+        <div><strong>48h</strong><span>Extra charge in the case</span></div>
       </div>
     </section>
 
-    <!-- Services carousel -->
-    <section class="services" id="services" aria-labelledby="services-title">
-      <div class="section-head reveal">
-        <div>
-          <p class="label">What we make</p>
-          <h2 class="section-title" id="services-title">Everything a launch needs<span class="accent">.</span></h2>
+    <!-- Assistant -->
+    <section class="assist" id="assistant">
+      <div class="assist__inner">
+        <p class="eyebrow">Built-in assistant</p>
+        <h2 class="assist__wake">“Hey Lumen,”</h2>
+        <p class="assist__query" id="query" aria-live="polite">what’s worth seeing on this street?</p>
+        <p class="assist__body">Ask about what’s in front of you, get directions, translate a menu or set a reminder. No phone, no screen, just your voice.</p>
+      </div>
+    </section>
+
+    <!-- Audio -->
+    <section class="split reveal" id="audio">
+      <div class="split__media split__media--warm" aria-hidden="true">
+        <svg class="split__frames" style="--lens:#3b2a1e"><use href="#frames"/></svg>
+        <div class="waves"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="split__copy">
+        <p class="eyebrow">New</p>
+        <h2>Introducing Lumen Audio</h2>
+        <p>An audio-first frame with no camera, for people who want great sound and a simple design. Open-ear speakers sit just above your ears, so you still hear the world around you.</p>
+        <a class="textlink" href="#family">Learn more</a>
+      </div>
+    </section>
+
+    <!-- Feature tiles -->
+    <section class="tiles reveal">
+      <article class="tile">
+        <div class="tile__media tile__media--sky" aria-hidden="true">
+          <div class="bubble">Calling Sam…</div>
         </div>
-        <div class="carousel-controls">
-          <button class="round" type="button" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 46 16" aria-hidden="true"><path d="M46 8H2M10 1L2 8l8 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-          <button class="round" type="button" data-dir="1" aria-label="Next"><svg viewBox="0 0 46 16" aria-hidden="true"><path d="M0 8h44M36 1l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+        <h3>Take calls, hands-free</h3>
+        <p>Five microphones pick up your voice and cut out wind and street noise, so you sound clear on every call.</p>
+      </article>
+      <article class="tile">
+        <div class="tile__media tile__media--sage" aria-hidden="true">
+          <div class="eq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
-      </div>
-
-      <ul class="carousel" tabindex="0" aria-label="Services">
-        <li class="card card--black">
-          <span class="label">01 — Positioning</span>
-          <span class="card__glyph">Why<span class="accent">?</span></span>
-          <h3 class="card__title">Find the one thing your audience can’t ignore.</h3>
-        </li>
-        <li class="card card--red">
-          <span class="label">02 — Identity</span>
-          <span class="card__glyph">Aa</span>
-          <h3 class="card__title">Names, marks and systems built to be remembered.</h3>
-        </li>
-        <li class="card card--grey">
-          <span class="label">03 — Campaign</span>
-          <span class="card__glyph">Go<span class="accent">.</span></span>
-          <h3 class="card__title">A launch idea big enough to carry every channel.</h3>
-        </li>
-        <li class="card card--black">
-          <span class="label">04 — Film</span>
-          <span class="card__glyph">▶</span>
-          <h3 class="card__title">Product films that make people stop scrolling.</h3>
-        </li>
-        <li class="card card--grey">
-          <span class="label">05 — Content</span>
-          <span class="card__glyph">24/7</span>
-          <h3 class="card__title">Always-on social, made at the speed of AI.</h3>
-        </li>
-        <li class="card card--red">
-          <span class="label">06 — Web</span>
-          <span class="card__glyph">www</span>
-          <h3 class="card__title">Launch sites that turn attention into action.</h3>
-        </li>
-      </ul>
+        <h3>Tune in without tuning out</h3>
+        <p>Podcasts, playlists and audiobooks with deeper bass, while staying aware of what’s around you.</p>
+      </article>
     </section>
 
-    <!-- Stat + process -->
-    <section class="process" id="process" aria-labelledby="process-title">
-      <div class="stat reveal">
-        <p class="label">Together we</p>
-        <h2 class="stat__number" id="process-title">4 weeks<span class="accent">.</span></h2>
-        <p class="stat__body">From brief to launch-ready, or less. One senior pod, one shared goal, no hand-offs.</p>
-        <a class="textlink" href="#contact">Book a kick-off call<svg class="arrow" viewBox="0 0 46 16" aria-hidden="true"><path d="M0 8h44M36 1l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+    <!-- Camera -->
+    <section class="camera" id="camera">
+      <div class="camera__head reveal">
+        <p class="eyebrow">12MP camera</p>
+        <h2>Catch the moment, not your phone</h2>
+        <p>Say “take a photo” or tap the frame. Shoot in 3K, then share straight from the app.</p>
       </div>
-
-      <ol class="weeks">
-        <li class="week reveal">
-          <span class="label">Week 1</span>
-          <h3 class="week__title">Dig</h3>
-          <p>Audience, market and product deep-dive. We find the tension worth building on.</p>
-        </li>
-        <li class="week reveal">
-          <span class="label">Week 2</span>
-          <h3 class="week__title">Define</h3>
-          <p>Positioning, story and the launch idea, pressure-tested before anything gets made.</p>
-        </li>
-        <li class="week reveal">
-          <span class="label">Week 3</span>
-          <h3 class="week__title">Make</h3>
-          <p>Identity, film, content and site, produced in parallel by the same senior team.</p>
-        </li>
-        <li class="week week--red reveal">
-          <span class="label">Week 4</span>
-          <h3 class="week__title">Launch</h3>
-          <p>Everything ready to ship, plus the playbook to keep the momentum going.</p>
-        </li>
-      </ol>
-    </section>
-
-    <!-- Testimonials (placeholder copy — replace with real client quotes) -->
-    <section class="clients" id="clients" aria-labelledby="clients-title">
-      <div class="section-head section-head--center reveal">
-        <p class="label">Clients</p>
-        <h2 class="section-title" id="clients-title">People who stopped being ignored<span class="accent">.</span></h2>
+      <div class="tabs" role="tablist" aria-label="Camera modes">
+        <button role="tab" aria-selected="true" aria-controls="mode-burst" id="tab-burst">Live photo</button>
+        <button role="tab" aria-selected="false" aria-controls="mode-slow" id="tab-slow" tabindex="-1">Slow motion</button>
+        <button role="tab" aria-selected="false" aria-controls="mode-pov" id="tab-pov" tabindex="-1">Hands-free video</button>
       </div>
-      <div class="quotes">
-        <figure class="quote reveal">
-          <span class="tag">Positioning</span>
-          <blockquote>“Client quote goes here. One or two sentences on what changed after working with Blacksmith.”</blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">A</span>Client name, Company</figcaption>
-        </figure>
-        <figure class="quote reveal">
-          <span class="tag">Campaign</span>
-          <blockquote>“Client quote goes here. One or two sentences on what changed after working with Blacksmith.”</blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">B</span>Client name, Company</figcaption>
-        </figure>
-        <figure class="quote reveal">
-          <span class="tag">Launch</span>
-          <blockquote>“Client quote goes here. One or two sentences on what changed after working with Blacksmith.”</blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">C</span>Client name, Company</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Spotlight -->
-    <section class="spotlight reveal" aria-labelledby="spotlight-title">
-      <div class="spotlight__text">
-        <p class="label">The pod</p>
-        <h2 class="section-title" id="spotlight-title">Senior creatives. Armed with AI<span class="accent">.</span></h2>
-        <p>No juniors learning on your budget, no layers of account management. A small pod of strategists, writers, designers and directors, using AI to move at a speed big agencies can’t.</p>
-        <a class="btn btn--black" href="#contact">Meet the pod<svg class="arrow" viewBox="0 0 46 16" aria-hidden="true"><path d="M0 8h44M36 1l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
-      </div>
-      <div class="spotlight__visual" aria-hidden="true">
-        <span class="chip chip--1">Strategy</span>
-        <span class="chip chip--2">Copy</span>
-        <span class="chip chip--3">Design</span>
-        <span class="chip chip--4">Film</span>
-        <span class="chip chip--5">AI</span>
-        <span class="spotlight__mark">B<span class="accent">.</span></span>
-      </div>
-    </section>
-
-    <!-- Work (placeholder projects — replace with real case studies) -->
-    <section class="work" id="work" aria-labelledby="work-title">
-      <div class="section-head reveal">
-        <div>
-          <p class="label">Selected work</p>
-          <h2 class="section-title" id="work-title">Launches that got noticed<span class="accent">.</span></h2>
+      <div class="viewer">
+        <div class="mode" id="mode-burst" role="tabpanel" aria-labelledby="tab-burst">
+          <div class="shot shot--burst" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p>Captures a few seconds before and after the shutter, so you can pick the exact frame later.</p>
+        </div>
+        <div class="mode" id="mode-slow" role="tabpanel" aria-labelledby="tab-slow" hidden>
+          <div class="shot shot--slow" aria-hidden="true"><i></i></div>
+          <p>Record at 120 fps and slow down a jump, a splash or a first step.</p>
+        </div>
+        <div class="mode" id="mode-pov" role="tabpanel" aria-labelledby="tab-pov" hidden>
+          <div class="shot shot--pov" aria-hidden="true"><i></i></div>
+          <p>Up to three minutes of stabilised video from exactly where you’re looking.</p>
         </div>
       </div>
-      <div class="work__grid">
-        <a class="feature reveal" href="#">
-          <span class="label">Featured case study</span>
-          <span class="feature__title">Project name: one line on the result.</span>
-          <span class="textlink">Read the case<svg class="arrow" viewBox="0 0 46 16" aria-hidden="true"><path d="M0 8h44M36 1l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+    </section>
+
+    <!-- Inside -->
+    <section class="inside">
+      <h2 class="reveal">Simple on the outside. Smart on the inside.</h2>
+      <div class="inside__stage reveal">
+        <svg class="inside__frames"><use href="#frames"/></svg>
+        <span class="spot" style="left:6%;top:14%"><b>12MP camera</b>Ultra-wide lens in the hinge</span>
+        <span class="spot" style="left:60%;top:2%"><b>Capture LED</b>Lights up whenever you record</span>
+        <span class="spot" style="left:2%;top:86%"><b>Open-ear speakers</b>Built into the temples</span>
+        <span class="spot" style="left:62%;top:86%"><b>Touch pad</b>Tap, swipe or hold to control</span>
+      </div>
+    </section>
+
+    <!-- Compare -->
+    <section class="compare" id="styles">
+      <h2 class="reveal">Choose the right Lumen for you</h2>
+      <div class="compare__grid">
+        <article class="card reveal" data-card>
+          <span class="badge">New</span>
+          <div class="card__media"><svg class="card__frames" style="color:#111"><use href="#frames"/></svg></div>
+          <h3>Lumen Classic (Gen 3)</h3>
+          <div class="swatches" role="radiogroup" aria-label="Frame colour">
+            <button role="radio" aria-checked="true" aria-label="Matte black" style="--c:#111"></button>
+            <button role="radio" aria-checked="false" aria-label="Tortoise" style="--c:#6b3f1e"></button>
+            <button role="radio" aria-checked="false" aria-label="Sand" style="--c:#cdb89a"></button>
+          </div>
+          <ul>
+            <li>Up to 8 hours of battery</li>
+            <li>3K Ultra HD video</li>
+            <li>Built-in assistant</li>
+            <li>Open-ear audio</li>
+          </ul>
+          <p class="card__price">From €379</p>
+          <a class="btn btn--blue" href="#top">Shop now</a>
+        </article>
+        <article class="card reveal" data-card>
+          <span class="badge">New</span>
+          <div class="card__media"><svg class="card__frames" style="color:#2d3b2f"><use href="#frames"/></svg></div>
+          <h3>Lumen Audio</h3>
+          <div class="swatches" role="radiogroup" aria-label="Frame colour">
+            <button role="radio" aria-checked="true" aria-label="Forest" style="--c:#2d3b2f"></button>
+            <button role="radio" aria-checked="false" aria-label="Matte black" style="--c:#111"></button>
+            <button role="radio" aria-checked="false" aria-label="Clear" style="--c:#d9dde0"></button>
+          </div>
+          <ul>
+            <li>Up to 10 hours of battery</li>
+            <li>No camera</li>
+            <li>Built-in assistant</li>
+            <li>Enhanced bass</li>
+          </ul>
+          <p class="card__price">From €299</p>
+          <a class="btn btn--blue" href="#top">Shop now</a>
+        </article>
+        <article class="card reveal" data-card>
+          <div class="card__media"><svg class="card__frames" style="color:#6b3f1e"><use href="#frames"/></svg></div>
+          <h3>Lumen Classic (Gen 2)</h3>
+          <div class="swatches" role="radiogroup" aria-label="Frame colour">
+            <button role="radio" aria-checked="true" aria-label="Tortoise" style="--c:#6b3f1e"></button>
+            <button role="radio" aria-checked="false" aria-label="Matte black" style="--c:#111"></button>
+          </div>
+          <ul>
+            <li>Up to 4 hours of battery</li>
+            <li>1080p video</li>
+            <li>Built-in assistant</li>
+            <li>Open-ear audio</li>
+          </ul>
+          <p class="card__price">From €299</p>
+          <a class="btn btn--outline" href="#top">Shop now</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Control -->
+    <section class="control" id="control">
+      <h2 class="reveal">You’re in control</h2>
+      <div class="control__grid">
+        <article class="reveal">
+          <div class="control__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
+          <h3>Lumen app</h3>
+          <p>Set up your glasses, import photos and manage settings in one place.</p>
+          <a class="textlink" href="#faq">Get the app</a>
+        </article>
+        <article class="reveal">
+          <div class="control__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></div>
+          <h3>Privacy</h3>
+          <p>A capture light shows others when you record, and you decide what gets shared.</p>
+          <a class="textlink" href="#faq">Privacy details</a>
+        </article>
+        <article class="reveal">
+          <div class="control__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M5 9l7 1 7-1M12 10v5l-3 7M12 15l3 7"/></svg></div>
+          <h3>Accessibility</h3>
+          <p>Describe surroundings, read text aloud and make calls entirely by voice.</p>
+          <a class="textlink" href="#faq">Accessibility features</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Family -->
+    <section class="family" id="family">
+      <div class="family__head">
+        <h2 class="reveal">Explore the Lumen family</h2>
+        <div class="family__nav">
+          <button type="button" class="icon icon--round" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button type="button" class="icon icon--round" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="family__track" id="track">
+        <a class="promo promo--dusk" href="#styles">
+          <svg class="promo__frames" style="--lens:#3b2a1e"><use href="#frames"/></svg>
+          <div><h3>Lumen Audio</h3><p>All sound, no camera.</p></div>
         </a>
-        <a class="tile reveal" href="#">
-          <span class="label">Client</span>
-          <span class="tile__title">Project name: one line on the result.</span>
+        <a class="promo promo--sea" href="#styles">
+          <svg class="promo__frames" style="color:#6b3f1e"><use href="#frames"/></svg>
+          <div><h3>Lumen (Gen 2)</h3><p>The original, now for less.</p></div>
         </a>
-        <a class="tile reveal" href="#">
-          <span class="label">Client</span>
-          <span class="tile__title">Project name: one line on the result.</span>
-        </a>
-        <a class="tile reveal" href="#">
-          <span class="label">Client</span>
-          <span class="tile__title">Project name: one line on the result.</span>
+        <a class="promo promo--sun" href="#styles">
+          <svg class="promo__frames" style="--lens:#4a3b12"><use href="#frames"/></svg>
+          <div><h3>Lumen Sport</h3><p>Wraparound fit, sweat resistant.</p></div>
         </a>
       </div>
     </section>
 
-    <!-- Newsletter / contact -->
-    <section class="signup reveal" id="contact" aria-labelledby="signup-title">
-      <h2 class="signup__title" id="signup-title">Ready to give them a reason to care<span class="accent">?</span></h2>
-      <form class="signup__form" action="#" onsubmit="return false">
-        <label class="sr-only" for="email">Email address</label>
-        <input id="email" type="email" name="email" placeholder="Your email" autocomplete="email" required>
-        <button class="btn btn--red" type="submit">Get in touch<svg class="arrow" viewBox="0 0 46 16" aria-hidden="true"><path d="M0 8h44M36 1l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-      </form>
-      <p class="signup__note">We’ll only use your email to reply. No lists, no spam.</p>
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <h2 class="reveal">Frequently asked questions</h2>
+      <div class="faq__list">
+        <details>
+          <summary>What’s new in Lumen (Gen 3)?</summary>
+          <p>Gen 3 doubles battery life to around 8 hours, records in 3K and weighs less than Gen 2, in the same classic shape.</p>
+        </details>
+        <details>
+          <summary>What can Lumen glasses do?</summary>
+          <p>Take photos and video, play music, take calls, send messages and answer questions about what you see, all by voice or touch.</p>
+        </details>
+        <details>
+          <summary>Is there a monthly fee?</summary>
+          <p>No. The app and the built-in assistant are included with your glasses.</p>
+        </details>
+        <details>
+          <summary>Can I make phone calls?</summary>
+          <p>Yes. Pair them with your phone over Bluetooth to take and make calls hands-free.</p>
+        </details>
+        <details>
+          <summary>How long does the battery last?</summary>
+          <p>Around 8 hours of typical use, with up to 48 more hours from the charging case.</p>
+        </details>
+        <details>
+          <summary>Do they work with prescription lenses?</summary>
+          <p>Yes. Most frames support single-vision, progressive and transition lenses.</p>
+        </details>
+        <details>
+          <summary>How much storage do they have?</summary>
+          <p>32GB, enough for over 1,000 photos or about 100 short videos before you import them.</p>
+        </details>
+        <details>
+          <summary>My glasses slip down. How do I fix that?</summary>
+          <p>Visit an optician to adjust the temples, or try a frame in a narrower fit.</p>
+        </details>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="footer__links">
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
-      <a href="#">Privacy</a>
+    <div class="footer__cols">
+      <div><h4>Shop</h4><a href="#styles">Glasses</a><a href="#audio">Audio</a><a href="#styles">Accessories</a></div>
+      <div><h4>Support</h4><a href="#faq">FAQ</a><a href="#faq">Returns</a><a href="#faq">Warranty</a></div>
+      <div><h4>About</h4><a href="#control">Privacy</a><a href="#control">Accessibility</a><a href="#top">Careers</a></div>
     </div>
-    <img class="footer__logo" src="assets/blacksmith-logo.svg" width="765" height="94" alt="Blacksmith">
-    <p class="footer__legal">© <span id="year">2026</span> Blacksmith — The Product Launch Studio</p>
+    <p class="footer__legal">© 2026 Lumen. Placeholder product for demo purposes.</p>
   </footer>
 </body>
 </html>

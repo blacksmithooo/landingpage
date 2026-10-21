@@ -12,7 +12,7 @@ The design uses three families:
 | Suisse Int'l Mono | Labels and buttons                | Regular (400)   |
 
 Files in use: `SuisseWorks-Regular.woff2`, `SuisseWorks-Medium.woff2`
-(available, not used in the current design), `SuisseIntl-Medium.woff2`,
+(for heavier headline weights), `SuisseIntl-Medium.woff2`,
 `SuisseIntlMono-Regular.woff2`. If you add or rename files, update the
 `@font-face` rules at the top of `styles.css` to match.
 

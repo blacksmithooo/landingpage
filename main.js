@@ -1,77 +1,109 @@
-// Smooth, momentum-style scrolling (https://github.com/darkroomengineering/lenis).
-// Skipped for people who've asked their OS for reduced motion.
-if (window.Lenis && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const lenis = new Lenis({
-    autoRaf: true,
-    lerp: 0.08,          // lower = more glide; 0.1 is Lenis' default
-    wheelMultiplier: 1,
-  });
-  window.lenis = lenis;
-}
-
-document.documentElement.classList.add('js');
-
-// Header: shadow once the page scrolls, hides while scrolling down and
-// returns on any scroll up. Stays put while the mobile menu is open or
-// something inside it has keyboard focus.
-const header = document.querySelector('.header');
-const menu = document.querySelector('.menu');
-const nav = document.getElementById('nav');
-
+// Header: transparent over the hero, solid after it, hides on scroll down
+const header = document.getElementById('header');
+const hero = document.querySelector('.hero');
 let lastY = window.scrollY;
 const onScroll = () => {
   const y = window.scrollY;
-  const delta = y - lastY;
-  header.classList.toggle('is-scrolled', y > 8);
-  if (Math.abs(delta) < 4) return;
-  const pinned = nav.classList.contains('is-open') || header.querySelector(':focus-visible');
-  header.classList.toggle('is-hidden', delta > 0 && y > 160 && !pinned);
+  header.classList.toggle('is-solid', y > hero.offsetHeight - 160);
+  header.classList.toggle('is-hidden', y > lastY && y > hero.offsetHeight);
   lastY = y;
 };
 window.addEventListener('scroll', onScroll, { passive: true });
-header.addEventListener('focusin', (e) => {
-  if (e.target.matches(':focus-visible')) header.classList.remove('is-hidden');
-});
 onScroll();
 
+// Mobile menu
+const menu = document.querySelector('.menu');
+const nav = document.getElementById('nav');
 menu.addEventListener('click', () => {
   const open = nav.classList.toggle('is-open');
   menu.setAttribute('aria-expanded', open);
-  menu.textContent = open ? 'Close' : 'Menu';
+  header.classList.toggle('is-solid', open || window.scrollY > hero.offsetHeight - 160);
 });
 nav.addEventListener('click', (e) => {
-  if (e.target.closest('a') && nav.classList.contains('is-open')) menu.click();
+  if (e.target.closest('a')) { nav.classList.remove('is-open'); menu.setAttribute('aria-expanded', 'false'); }
 });
 
-// Services carousel: arrow buttons scroll one card at a time.
-const carousel = document.querySelector('.carousel');
-const buttons = document.querySelectorAll('.carousel-controls .round');
+// Hero play / pause
+const play = document.querySelector('.hero__play');
+play.addEventListener('click', () => {
+  const paused = hero.classList.toggle('is-paused');
+  play.setAttribute('aria-pressed', paused);
+  play.setAttribute('aria-label', paused ? 'Play animation' : 'Pause animation');
+});
 
-const step = () => {
-  const card = carousel.querySelector('.card');
-  return card.getBoundingClientRect().width + parseFloat(getComputedStyle(carousel).columnGap);
-};
-const updateButtons = () => {
-  const max = carousel.scrollWidth - carousel.clientWidth - 2;
-  buttons[0].disabled = carousel.scrollLeft <= 2;
-  buttons[1].disabled = carousel.scrollLeft >= max;
-};
-buttons.forEach((b) => b.addEventListener('click', () => {
-  carousel.scrollBy({ left: step() * Number(b.dataset.dir), behavior: 'smooth' });
-}));
-carousel.addEventListener('scroll', updateButtons, { passive: true });
-window.addEventListener('resize', updateButtons);
-updateButtons();
-
-// Fade sections in as they enter the viewport.
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-in');
-      io.unobserve(entry.target);
+// Assistant: type out example questions in a loop
+const query = document.getElementById('query');
+const questions = [
+  'what’s worth seeing on this street?',
+  'translate this menu for me.',
+  'remind me where I parked.',
+  'what kind of plant is this?',
+];
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduced) {
+  let q = 0;
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  (async function loop() {
+    for (;;) {
+      const text = questions[q];
+      for (let i = 0; i <= text.length; i++) { query.textContent = text.slice(0, i); await wait(45); }
+      await wait(2200);
+      for (let i = text.length; i >= 0; i--) { query.textContent = text.slice(0, i); await wait(18); }
+      await wait(300);
+      q = (q + 1) % questions.length;
     }
-  });
-}, { rootMargin: '0px 0px -10% 0px' });
-document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  })();
+}
 
-document.getElementById('year').textContent = new Date().getFullYear();
+// Camera mode tabs (arrow keys move between tabs)
+const tabs = [...document.querySelectorAll('[role="tab"]')];
+const select = (tab) => {
+  tabs.forEach((t) => {
+    const on = t === tab;
+    t.setAttribute('aria-selected', on);
+    t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+  });
+};
+tabs.forEach((tab, i) => {
+  tab.addEventListener('click', () => select(tab));
+  tab.addEventListener('keydown', (e) => {
+    const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!d) return;
+    const next = tabs[(i + d + tabs.length) % tabs.length];
+    select(next);
+    next.focus();
+  });
+});
+
+// Compare cards: colour swatches recolour the frame
+document.querySelectorAll('[data-card]').forEach((card) => {
+  const frames = card.querySelector('.card__frames');
+  card.querySelectorAll('.swatches button').forEach((sw, _, all) => {
+    sw.addEventListener('click', () => {
+      all.forEach((b) => b.setAttribute('aria-checked', b === sw));
+      frames.style.color = getComputedStyle(sw).getPropertyValue('--c');
+    });
+  });
+});
+
+// Family carousel arrows
+const track = document.getElementById('track');
+document.querySelectorAll('.family__nav button').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const step = track.firstElementChild.offsetWidth + 24;
+    track.scrollBy({ left: step * Number(btn.dataset.dir), behavior: 'smooth' });
+  });
+});
+
+// FAQ: one answer open at a time
+const items = document.querySelectorAll('.faq details');
+items.forEach((d) => d.addEventListener('toggle', () => {
+  if (d.open) items.forEach((o) => { if (o !== d) o.open = false; });
+}));
+
+// Scroll reveals
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
