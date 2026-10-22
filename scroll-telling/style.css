@@ -73,7 +73,9 @@ sup { display: inline-grid; place-items: center; width: 1.5em; height: 1.5em; ma
 .hero__lead span { transition: opacity .15s linear; }
 
 /* 2. Morph: glasses → the "00" in 100% */
-.morph { height: 260svh; --m: clamp(0, calc((var(--p) - .06) * 2.1), 1); --d: clamp(0, calc((var(--p) - .38) * 3.2), 1); --s: clamp(0, calc((var(--p) - .6) * 4), 1); }
+.morph { height: 340svh; --m: clamp(0, calc((var(--p) - .04) * 3.15), 1); --d: clamp(0, calc((var(--p) - .253) * 4.8), 1); --s: clamp(0, calc((var(--p) - .4) * 6), 1); }
+/* Butterfly: drawn on a full-screen canvas so it can fly in from off-screen (app.js) */
+.morph__fly { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; pointer-events: none; }
 .morph .pin { display: grid; place-items: center; background: var(--paper); }
 .morph__stage { display: grid; justify-items: center; gap: clamp(20px, 3vw, 40px); }
 .morph__num { display: flex; align-items: center; font-size: clamp(104px, 17vw, 290px); font-weight: 500; line-height: 1; letter-spacing: -.05em; }

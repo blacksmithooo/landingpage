@@ -101,7 +101,7 @@ for the length of their runway. Elements with `data-reveal` fade up once when
 they enter the viewport.
 
 1. **Hero:** pinned. The headline lifts away, the intro copy lights up word by word, the image drifts, then the stage fades to light.
-2. **Morph:** pinned. The glasses shrink into the "00" of "100%" while the digits blur in.
+2. **Morph:** pinned. The glasses shrink into the "00" of "100%" while the digits blur in, then a blue morpho butterfly flies in from off-screen and lands on the frame. Its frames were cut out of a generated landing clip (`assets/scroll/butterfly.webp` plus positions in `butterfly.json`) and drawn on a full-screen canvas, so it can fly anywhere on the page. Scroll scrubs the flight; once perched it flutters gently.
 3. **Hand + film card:** the hand rises with parallax, then the film card slides over it. "Watch the film" opens the hero video in a viewer.
 4. **Designed for real life:** the card unveils downward while the copy arrives.
 5. **Stats:** count up, with dividers drawing in and the background warming.

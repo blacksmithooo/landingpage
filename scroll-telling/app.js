@@ -44,6 +44,79 @@ addEventListener('scroll', onScroll, { passive: true });
 addEventListener('resize', onScroll);
 update();
 
+// ---------- Butterfly lands on the glasses in the "100%" scene ----------
+// Frames were cut out of a generated landing clip (assets/scroll/butterfly.webp,
+// positions in butterfly.json, in 960×540 clip space, which shares the product
+// shot's framing). Scroll drives the flight: first an approach from off-screen
+// on a curve, then the real flight and landing frames. Once perched it settles
+// with a slow flutter.
+const morph = document.querySelector('.morph');
+const flyCanvas = morph.querySelector('.morph__fly');
+const glassesImg = morph.querySelector('.morph__glasses');
+const fly = { img: new Image(), meta: null, on: false };
+// in/land/done: scroll progress for approach start, handover to real frames, perched.
+// landed: frame index where it has settled (later frames are identical).
+const FLY = { in: 0.56, land: 0.68, done: 0.9, landed: 42, idleFrom: 30, scale: 1.3, anchor: [50, 135] };
+fly.img.src = '../assets/scroll/butterfly.webp';
+fetch('../assets/scroll/butterfly.json').then((r) => r.json()).then((m) => { fly.meta = m; drawFly(); });
+const ease = (t) => 1 - Math.pow(1 - t, 3);
+const bez = (a, b, c, d, t) => { const u = 1 - t; return u * u * u * a + 3 * u * u * t * b + 3 * u * t * t * c + t * t * t * d; };
+
+function sizeCanvas() {
+  const dpr = Math.min(2, devicePixelRatio || 1);
+  flyCanvas.width = Math.round(flyCanvas.clientWidth * dpr);
+  flyCanvas.height = Math.round(flyCanvas.clientHeight * dpr);
+}
+function drawFly(now = performance.now()) {
+  const m = fly.meta;
+  if (!m || !fly.img.complete || !flyCanvas.width) return;
+  const ctx = flyCanvas.getContext('2d');
+  ctx.clearRect(0, 0, flyCanvas.width, flyCanvas.height);
+  const p = reduced ? 1 : clamp(-morph.getBoundingClientRect().top / (morph.offsetHeight - innerHeight));
+  if (p < FLY.in) return;
+  const k = flyCanvas.width / flyCanvas.clientWidth;
+  const cr = flyCanvas.getBoundingClientRect();
+  const gr = glassesImg.getBoundingClientRect();
+  const s = gr.width / m.src_w; // clip px → CSS px
+  const n = m.pos.length;
+  // Page position (CSS px, canvas space) of frame i's window
+  const at = (i) => [gr.left - cr.left + m.pos[i][0] * s, gr.top - cr.top + m.pos[i][1] * s];
+  let i; let x; let y;
+  if (p < FLY.land) {
+    // Approach: loop the first wing beats while travelling in from off-screen
+    const t = ease((p - FLY.in) / (FLY.land - FLY.in));
+    i = Math.floor(now / 55) % 7;
+    const [ex, ey] = at(0);
+    const sx = cr.width + 120; const sy = -cr.height * 0.2;
+    x = bez(sx, sx - cr.width * 0.25, ex + cr.width * 0.18, ex, t);
+    y = bez(sy, sy + cr.height * 0.55, ey - cr.height * 0.32, ey, t) + Math.sin(now / 260) * 6 * (1 - t);
+  } else if (p < FLY.done) {
+    // Real flight and landing frames, scrubbed by scroll
+    i = Math.round(((p - FLY.land) / (FLY.done - FLY.land)) * FLY.landed);
+    [x, y] = at(i);
+  } else {
+    // Perched: slow ping-pong through the settling frames
+    const t = (now / 1800) % 2;
+    i = reduced ? FLY.landed : FLY.idleFrom + Math.round((t < 1 ? t : 2 - t) * (FLY.landed - FLY.idleFrom));
+    [x, y] = at(i);
+  }
+  // Draw slightly larger than life, scaled around the feet so it still sits on the rim
+  const sc = FLY.scale * (cr.width < 700 ? 1.45 : 1); // a touch bigger on phones
+  const w = m.w * s * sc; const h = m.h * s * sc;
+  const dx = x + FLY.anchor[0] * s * (1 - sc); const dy = y + FLY.anchor[1] * s * (1 - sc);
+  const sxp = (i % m.cols) * m.w; const syp = Math.floor(i / m.cols) * m.h;
+  ctx.drawImage(fly.img, sxp, syp, m.w, m.h, dx * k, dy * k, w * k, h * k);
+}
+fly.img.addEventListener('load', () => drawFly());
+sizeCanvas();
+addEventListener('resize', () => { sizeCanvas(); drawFly(); });
+// Animate while the scene is on screen (wing beats and the perched flutter are time-based)
+new IntersectionObserver(([e]) => {
+  fly.on = e.isIntersecting;
+  if (fly.on && !reduced) requestAnimationFrame(function loop(t) { drawFly(t); if (fly.on) requestAnimationFrame(loop); });
+  else drawFly();
+}).observe(morph);
+
 // ---------- Reveal on enter ----------
 const countUp = (el) => {
   const to = Number(el.dataset.count);
