@@ -105,7 +105,7 @@ they enter the viewport.
 3. **Hand + film card:** the hand rises with parallax, then the film card slides over it. "Watch the film" opens the hero video in a viewer.
 4. **Designed for real life:** the card unveils downward while the copy arrives.
 5. **Stats:** count up, with dividers drawing in and the background warming.
-6. **8 hours:** pinned dark stage. The macro shot settles as the figure rises.
+6. **8 hours:** pinned dark stage. A looping video of the frame in see-through acetate, with light pulses travelling along the wiring inside, settles as the figure rises (`assets/scroll/xray.mp4`, poster `xray.jpg`).
 7. **Built for every day:** full-width video card scaling in.
 8. **Everyday intelligence:** tabs swap a horizontal card rail with arrows and a progress bar.
 9. **Technical specifications** panel, then **Choose your style** (all 15 colourways; hover shows the price), notes and footer.
