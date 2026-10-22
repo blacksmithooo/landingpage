@@ -105,7 +105,7 @@ they enter the viewport.
 3. **Hand + film card:** the hand rises with parallax, then the film card slides over it. "Watch the film" opens the hero video in a viewer.
 4. **Designed for real life:** the card unveils downward while the copy arrives.
 5. **Stats:** count up, with dividers drawing in and the background warming.
-6. **8 hours:** pinned dark stage. A looping video of the frame in clear acetate settles as the figure rises. Inside are slim circuit strips with a few tidy components, a battery cell, a chip at the bridge and gold traces, which light up softly from within as a warm glow passes through them. First and last frames match, so it loops seamlessly (`assets/scroll/xray.mp4`, poster `xray.jpg`).
+6. **8 hours:** pinned dark stage. A looping video of the frame in clear acetate settles as the figure rises. The front is almost bare (two hairline traces to a tiny chip at the bridge); the electronics sit inside the temple arms (a muted sage module, small chips, a battery cell). The components light softly, then a fine warm glow runs along the traces to the bridge. Only the light is taken from the generated clip and layered onto the still frame, so the components never change shape (`assets/scroll/xray.mp4`, poster `xray.jpg`).
 7. **Built for every day:** full-width video card scaling in.
 8. **Everyday intelligence:** tabs swap a horizontal card rail with arrows and a progress bar.
 9. **Technical specifications** panel, then **Choose your style** (all 15 colourways; hover shows the price), notes and footer.
