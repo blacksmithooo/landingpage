@@ -158,7 +158,7 @@ const vio = new IntersectionObserver((entries) => {
     else e.target.pause();
   }
 }, { threshold: 0.25 });
-[film, built].forEach((v) => vio.observe(v));
+[film, built, document.querySelector('.battery__img')].forEach((v) => vio.observe(v));
 if (reduced) built.removeAttribute('autoplay');
 
 const viewer = document.getElementById('viewer');
