@@ -63,7 +63,8 @@ sup { display: inline-grid; place-items: center; width: 1.5em; height: 1.5em; ma
 .hero { height: 200svh; }
 .hero .pin { background: linear-gradient(180deg, #6c7079, #3f434a); color: #fff; }
 .hero .pin::after { content: ""; position: absolute; inset: 0; background: var(--paper); opacity: clamp(0, calc((var(--p) - .8) * 6), 1); pointer-events: none; }
-.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; transform: translateY(calc(var(--p) * -14svh)) scale(calc(1.1 - var(--p) * .1)); will-change: transform; }
+/* Taller than the stage and anchored at the top, so drifting up never exposes its bottom edge */
+.hero__img { position: absolute; top: 0; left: 0; width: 100%; height: calc(100% + 18svh); object-fit: cover; object-position: 30% 50%; transform-origin: 50% 0; transform: translateY(calc(var(--p) * -14svh)) scale(calc(1.1 - var(--p) * .1)); will-change: transform; }
 .hero__title { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 18px; text-align: center; transform: translateY(calc(var(--p) * -70svh)); opacity: clamp(0, calc(1 - var(--p) * 2.6), 1); }
 .hero__eyebrow { font-size: clamp(20px, 2vw, 30px); letter-spacing: -.01em; }
 .hero__eyebrow sup { background: #fff; color: #3f434a; }
