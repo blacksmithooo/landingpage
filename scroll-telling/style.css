@@ -83,7 +83,8 @@ sup { display: inline-grid; place-items: center; width: 1.5em; height: 1.5em; ma
 .morph__digit--l { transform: translateX(calc((1 - var(--d)) * -.5em)); }
 .morph__digit--r { transform: translateX(calc((1 - var(--d)) * .5em)); }
 .morph__gap { position: relative; width: 1.56em; height: .7em; margin: 0 -.02em 0 .14em; }
-.morph__glasses { position: absolute; left: 50%; top: 50%; width: 1.8em; max-width: none; mix-blend-mode: multiply; transform: translate(-50%, -50%) translateY(calc((1 - var(--m)) * .18em)) scale(calc(1 + (1 - var(--m)) * 1.55)); will-change: transform; }
+.morph__glasses { position: absolute; left: 50%; top: 50%; width: 1.8em; max-width: none; mix-blend-mode: multiply; transform: translate(-50%, -50%) translate(calc((1 - var(--m)) * .26em), calc((1 - var(--m)) * .16em)) scale(calc(1 + (1 - var(--m)) * var(--g0, 1.55))); will-change: transform; }
+/* While large, the glasses sit on the screen's centre line (the gap for the "00" is .26em left of it, since "%" is wider than "1"), then glide into the gap as they shrink. */
 .morph__sub { font-size: clamp(18px, 1.8vw, 26px); opacity: var(--s); transform: translateY(calc((1 - var(--s)) * 24px)); }
 
 /* 3. Hand rises, film card slides over it */
@@ -234,6 +235,7 @@ sup { display: inline-grid; place-items: center; width: 1.5em; height: 1.5em; ma
   .specs__grid { grid-template-columns: 1fr; gap: 28px; }
   .finish__head { flex-direction: column; align-items: flex-start; }
   .film { margin-top: -18svh; aspect-ratio: 4 / 5; }
+  .morph { --g0: .8; } /* start smaller so the glasses fit the screen */
 }
 
 /* ---------- Reduced motion: scenes unpin and show their end state ---------- */
