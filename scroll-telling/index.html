@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumen (Gen 3) · Scroll-telling</title>
+  <meta name="description" content="Lumen (Gen 3): classic frames with a camera, open-ear audio and an assistant built in. A scroll-driven product story.">
+  <link rel="preload" href="../fonts/SuisseIntl-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/SuisseWorks-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <!-- Header over the hero; swaps for the slim product bar once you scroll past it -->
+  <header class="header" id="header">
+    <a class="logo" href="../" aria-label="Lumen home">
+      <svg viewBox="0 0 34 16" aria-hidden="true"><circle cx="8" cy="8" r="6"/><circle cx="26" cy="8" r="6"/><path d="M14 8h6"/></svg>Lumen
+    </a>
+    <nav class="header__nav" aria-label="Page">
+      <a href="#features">Features</a>
+      <a href="#specs">Tech specs</a>
+      <a href="#finish">Styles</a>
+      <a href="../">Main page</a>
+    </nav>
+    <a class="header__bag" href="#finish" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 016 0v2"/></svg></a>
+  </header>
+  <div class="bar" id="bar">
+    <span class="bar__name">Lumen <sup>3</sup></span>
+    <a class="pill pill--blue" href="#finish">Shop now</a>
+  </div>
+
+  <main id="main">
+    <!-- 1. Hero: pinned stage. Title lifts away, intro copy lights up word by word -->
+    <section class="hero" data-scene>
+      <div class="pin">
+        <img class="hero__img" src="../assets/scroll/hero-dark.jpg" alt="Lumen Wayline glasses in close-up" fetchpriority="high">
+        <div class="hero__title">
+          <p class="hero__eyebrow">Lumen <sup>3</sup></p>
+          <h1>Made to be worn</h1>
+          <a class="pill pill--light" href="#finish">Shop now</a>
+        </div>
+        <div class="hero__intro">
+          <p class="eyebrow">Introducing Lumen (Gen 3)</p>
+          <p class="hero__lead" data-words>Classic frames with a camera, open-ear audio and an assistant built in, and nothing that looks like tech.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Morph: the glasses shrink to become the "00" in 100% -->
+    <section class="morph" data-scene>
+      <div class="pin">
+        <div class="morph__stage">
+          <div class="morph__num" aria-label="100%">
+            <span class="morph__digit morph__digit--l" aria-hidden="true">1</span>
+            <span class="morph__gap" aria-hidden="true">
+              <img class="morph__glasses" src="../assets/products/wayline-black.jpg" alt="">
+            </span>
+            <span class="morph__digit morph__digit--r" aria-hidden="true">%</span>
+          </div>
+          <p class="morph__sub">Hands-free. Calls, music, photos and answers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Hand rises, then the film card slides up over it -->
+    <section class="lift" data-scene>
+      <img class="lift__hand" src="../assets/scroll/hand.jpg" alt="A hand holding up the Wayline glasses">
+      <figure class="film" data-reveal>
+        <video class="film__video" muted loop playsinline preload="metadata" poster="../assets/hero-poster.jpg">
+          <source src="../assets/hero-mobile.mp4" type="video/mp4" media="(max-width: 720px)">
+          <source src="../assets/hero.mp4" type="video/mp4">
+        </video>
+        <button class="film__play" type="button" aria-label="Watch the film">
+          <span><svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg></span>Watch the film
+        </button>
+      </figure>
+    </section>
+
+    <!-- 4. Card grows from landscape to portrait while the copy arrives -->
+    <section class="real" data-scene>
+      <h2 class="serif center" data-reveal>Designed for<br>real life</h2>
+      <div class="real__row">
+        <div class="real__card"><img src="../assets/photos/calls.jpg" alt="A woman in a cobalt blazer putting on Lumen glasses on a rooftop" loading="lazy"></div>
+        <p class="real__copy">Sensors, speakers and a camera tucked into a frame you’d choose anyway, so the tech disappears and you stay in the moment, day and night.</p>
+      </div>
+    </section>
+
+    <!-- 5. Stats count up, dividers draw in -->
+    <section class="stats" data-reveal>
+      <div class="stat">
+        <span class="stat__icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M9 7l1.5-3h3L15 7"/></svg></span>
+        <p class="stat__num"><span data-count="12">0</span>MP</p>
+        <p class="stat__label">Ultra-wide camera</p>
+        <p class="stat__note">Photos and 3K video¹</p>
+      </div>
+      <div class="stat">
+        <span class="stat__icon"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></span>
+        <p class="stat__num"><span data-count="5">0</span></p>
+        <p class="stat__label">Microphones</p>
+        <p class="stat__note">Clear calls in wind and crowds</p>
+      </div>
+      <div class="stat">
+        <span class="stat__icon"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/></svg></span>
+        <p class="stat__num"><span data-count="2">0</span></p>
+        <p class="stat__label">Open-ear speakers</p>
+        <p class="stat__note">Private listening, street still audible</p>
+      </div>
+    </section>
+
+    <!-- 6. Battery: pinned dark stage, macro shot settles as the figure rises -->
+    <section class="battery" data-scene>
+      <div class="pin">
+        <img class="battery__img" src="../assets/scroll/macro-dark.jpg" alt="" loading="lazy">
+        <div class="battery__copy">
+          <p class="battery__big">8 hours</p>
+          <p class="battery__sub">of battery from a single charge, plus 48 more in the case.²</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Full-width film card with overlay headline -->
+    <section class="built">
+      <div class="built__card" data-reveal="scale">
+        <video muted loop playsinline autoplay preload="metadata" poster="../assets/scroll/seaside-poster.jpg">
+          <source src="../assets/scroll/seaside.mp4" type="video/mp4">
+        </video>
+        <div class="built__copy">
+          <h2 class="serif">Built for every day.<br>Designed for comfort.</h2>
+          <p>Lightweight acetate. Water resistant. Made to be worn from morning to night.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Feature tabs with a horizontal card rail -->
+    <section class="features" id="features">
+      <h2 class="serif center" data-reveal>Everyday intelligence</h2>
+      <div class="tabs" role="tablist" aria-label="Feature categories" data-reveal></div>
+      <div class="rail" id="rail" role="tabpanel" tabindex="0"></div>
+      <div class="rail__nav" data-reveal>
+        <button class="rail__btn" type="button" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span class="rail__track"><span class="rail__thumb" id="thumb"></span></span>
+        <button class="rail__btn" type="button" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </section>
+
+    <!-- 9. Technical specifications panel -->
+    <section class="specs" id="specs">
+      <div class="specs__panel" data-reveal>
+        <div class="specs__side">
+          <img src="../assets/products/hotspot.jpg" alt="Lumen Wayline glasses" loading="lazy">
+          <div class="specs__box">
+            <h3><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4zM3 7l9 4 9-4M12 11v10"/></svg>What’s included</h3>
+            <ul><li>Lumen (Gen 3) glasses</li><li>Charging case</li><li>USB-C cable</li><li>Cleaning cloth</li></ul>
+          </div>
+        </div>
+        <div class="specs__main">
+          <h2>Technical specifications</h2>
+          <div class="specs__grid">
+            <div><h3><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/></svg>Camera</h3><ul><li>12MP ultra-wide in the hinge</li><li>3K video at 30 fps</li><li>Capture light shows when recording</li></ul></div>
+            <div><h3><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/></svg>Audio</h3><ul><li>Two open-ear speakers</li><li>Five-microphone array</li><li>Wind noise reduction</li></ul></div>
+            <div><h3><svg viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 10v4M7 10v4M11 10v4"/></svg>Battery</h3><ul><li>Up to 8 hours of typical use</li><li>Up to 48 more from the case</li><li>50% charge in 20 minutes</li></ul></div>
+            <div><h3><svg viewBox="0 0 24 24"><path d="M4 20h16M7 20V9l5-5 5 5v11"/></svg>Weight and dimensions</h3><ul><li>From 49 g</li><li>Lens width: 50 mm</li><li>Temple length: 145 mm</li></ul></div>
+            <div><h3><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>Materials</h3><ul><li>Plant-based acetate front</li><li>Brushed steel hinges</li><li>Water resistant (IPX4)</li></ul></div>
+            <div><h3><svg viewBox="0 0 24 24"><path d="M5 12a10 10 0 0114 0M8 15a6 6 0 018 0M12 18h.01"/></svg>Connectivity</h3><ul><li>Bluetooth 5.3 and Wi-Fi 6</li><li>Works with iOS and Android</li><li>Over-the-air updates</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Finish picker carousel -->
+    <section class="finish" id="finish">
+      <div class="finish__head">
+        <h2 class="serif" data-reveal>Choose your style</h2>
+        <div class="finish__nav">
+          <button class="rail__btn" type="button" data-fdir="-1" aria-label="Previous styles"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="rail__btn" type="button" data-fdir="1" aria-label="Next styles"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="finish__rail" id="finishRail"></div>
+    </section>
+
+    <section class="notes">
+      <p>¹ 3K video recorded at 30 fps in good light. Quality varies with conditions.</p>
+      <p>² Battery life depends on settings, usage and other factors. Case adds about six full charges.</p>
+      <p>Lumen is a placeholder product used for this page draft. Names, prices and specifications are examples.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <a class="logo logo--big" href="../"><svg viewBox="0 0 34 16" aria-hidden="true"><circle cx="8" cy="8" r="6"/><circle cx="26" cy="8" r="6"/><path d="M14 8h6"/></svg>Lumen</a>
+    </div>
+    <div class="footer__grid">
+      <div class="footer__news">
+        <p class="serif">Get stories, tips and offers from Lumen</p>
+        <form class="footer__form" onsubmit="return false"><label class="visually-hidden" for="email">Email address</label><input id="email" type="email" placeholder="Email address"><button type="submit" aria-label="Sign up">→</button></form>
+      </div>
+      <div><h3>Shop</h3><a href="#finish">Smart glasses</a><a href="#finish">Audio glasses</a><a href="#specs">Accessories</a></div>
+      <div><h3>Support</h3><a href="#">Help centre</a><a href="#">Order status</a><a href="#">Returns</a></div>
+      <div><h3>Company</h3><a href="#">About</a><a href="#">Careers</a><a href="#">Press</a></div>
+      <div><h3>Connect</h3><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a></div>
+    </div>
+    <p class="footer__legal">© 2026 Lumen. A placeholder brand for this page draft.</p>
+  </footer>
+
+  <dialog class="viewer" id="viewer" aria-label="Lumen film">
+    <button class="viewer__close" type="button" aria-label="Close">×</button>
+    <video controls playsinline muted loop>
+      <source src="../assets/hero-mobile.mp4" type="video/mp4" media="(max-width: 720px)">
+      <source src="../assets/hero.mp4" type="video/mp4">
+    </video>
+  </dialog>
+</body>
+</html>

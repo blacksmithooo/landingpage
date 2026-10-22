@@ -5,6 +5,8 @@ product page. It's a starting point for our own design work, not a finished page
 
 **Live preview:** https://blacksmithooo.github.io/landingpage/
 
+**Scroll-telling page:** https://blacksmithooo.github.io/landingpage/scroll-telling/
+
 Or open `index.html` in a browser. There's no build step.
 
 ## Page structure
@@ -84,6 +86,34 @@ Scrolling is smoothed with [Lenis](https://github.com/darkroomengineering/lenis)
 glide with `lerp` in `main.js` (lower is floatier). Anchor links still respect
 `scroll-padding-top`. Touch devices keep native scrolling, and Lenis is off
 with `prefers-reduced-motion`.
+
+## Scroll-telling page
+
+`scroll-telling/` is a second, self-contained page (`index.html`, `style.css`,
+`app.js`) that tells the Lumen story through scroll-driven motion. Its section
+order and motion follow a modern smart-ring product page; all copy and imagery
+are our own placeholders.
+
+How the motion works: every `[data-scene]` section gets a `--p` CSS variable
+from 0 to 1 as you scroll through it (`app.js`), and `style.css` maps `--p` to
+transforms, opacity, blur and clip-paths. Pinned scenes hold a sticky `.pin`
+for the length of their runway. Elements with `data-reveal` fade up once when
+they enter the viewport.
+
+1. **Hero:** pinned. The headline lifts away, the intro copy lights up word by word, the image drifts, then the stage fades to light.
+2. **Morph:** pinned. The glasses shrink into the "00" of "100%" while the digits blur in.
+3. **Hand + film card:** the hand rises with parallax, then the film card slides over it. "Watch the film" opens the hero video in a viewer.
+4. **Designed for real life:** the card unveils downward while the copy arrives.
+5. **Stats:** count up, with dividers drawing in and the background warming.
+6. **8 hours:** pinned dark stage. The macro shot settles as the figure rises.
+7. **Built for every day:** full-width video card scaling in.
+8. **Everyday intelligence:** tabs swap a horizontal card rail with arrows and a progress bar.
+9. **Technical specifications** panel, then **Choose your style** (all 15 colourways; hover shows the price), notes and footer.
+
+It reuses the main page's fonts, photos, product shots and hero video. New
+assets in `assets/scroll/`: `hero-dark.jpg`, `macro-dark.jpg` and `hand.jpg`
+(generated), and `seaside.mp4` (a clip from the hero shoot). With reduced
+motion, the scenes unpin and show their end states.
 
 ## Fonts
 
